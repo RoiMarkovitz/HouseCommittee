@@ -190,7 +190,7 @@
 											"font": "Arial;13;1",
 											"left": 704,
 											"top": 61,
-											"width": 261.86083984375,
+											"width": 270.5380859375,
 											"height": 13,
 											"text": "APARTMENT"
 										},
@@ -216,7 +216,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 84,
-													"width": 251.86083984375,
+													"width": 260.5380859375,
 													"height": 13
 												},
 												{
@@ -231,7 +231,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 99,
-													"width": 251.86083984375,
+													"width": 260.5380859375,
 													"height": 13
 												},
 												{
@@ -246,7 +246,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 114,
-													"width": 251.86083984375,
+													"width": 260.5380859375,
 													"height": 13
 												},
 												{
@@ -261,7 +261,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 129,
-													"width": 251.86083984375,
+													"width": 260.5380859375,
 													"height": 13
 												},
 												{
@@ -277,7 +277,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 159,
-													"width": 251.86083984375,
+													"width": 260.5380859375,
 													"height": 13
 												},
 												{
@@ -292,21 +292,21 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 144,
-													"width": 251.86083984375,
+													"width": 260.5380859375,
 													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 704,
 											"top": 79,
-											"width": 261.86083984375,
+											"width": 270.5380859375,
 											"height": 83
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 704,
 									"top": 56,
-									"width": 261.86083984375,
+									"width": 270.5380859375,
 									"height": 106,
 									"nameLabel": {
 										"$ref": "AAAAAAF7FgQTOqUqMNo="
@@ -380,12 +380,12 @@
 												},
 												{
 													"_type": "ERDColumnView",
-													"_id": "AAAAAAF7Fg5Y2KXrrWM=",
+													"_id": "AAAAAAF7FhJU1qYWDxA=",
 													"_parent": {
 														"$ref": "AAAAAAF7FgcOtaVZ1AE="
 													},
 													"model": {
-														"$ref": "AAAAAAF7Fg5Y06XoMoY="
+														"$ref": "AAAAAAF7FhJUzKYTV0k="
 													},
 													"font": "Arial;13;0",
 													"left": 1069,
@@ -395,12 +395,12 @@
 												},
 												{
 													"_type": "ERDColumnView",
-													"_id": "AAAAAAF7FhJU1qYWDxA=",
+													"_id": "AAAAAAF7Fg5Y2KXrrWM=",
 													"_parent": {
 														"$ref": "AAAAAAF7FgcOtaVZ1AE="
 													},
 													"model": {
-														"$ref": "AAAAAAF7FhJUzKYTV0k="
+														"$ref": "AAAAAAF7Fg5Y06XoMoY="
 													},
 													"font": "Arial;13;0",
 													"left": 1069,
@@ -794,7 +794,7 @@
 											"font": "Arial;13;1",
 											"left": 56,
 											"top": 453,
-											"width": 253.93896484375,
+											"width": 266.208984375,
 											"height": 13,
 											"text": "SERVICE_PAYMENTS"
 										},
@@ -820,7 +820,7 @@
 													"font": "Arial;13;0",
 													"left": 61,
 													"top": 476,
-													"width": 243.93896484375,
+													"width": 256.208984375,
 													"height": 13
 												},
 												{
@@ -835,7 +835,7 @@
 													"font": "Arial;13;0",
 													"left": 61,
 													"top": 491,
-													"width": 243.93896484375,
+													"width": 256.208984375,
 													"height": 13
 												},
 												{
@@ -850,7 +850,7 @@
 													"font": "Arial;13;0",
 													"left": 61,
 													"top": 506,
-													"width": 243.93896484375,
+													"width": 256.208984375,
 													"height": 13
 												},
 												{
@@ -865,7 +865,7 @@
 													"font": "Arial;13;0",
 													"left": 61,
 													"top": 521,
-													"width": 243.93896484375,
+													"width": 256.208984375,
 													"height": 13
 												},
 												{
@@ -880,21 +880,21 @@
 													"font": "Arial;13;0",
 													"left": 61,
 													"top": 536,
-													"width": 243.93896484375,
+													"width": 256.208984375,
 													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 56,
 											"top": 471,
-											"width": 253.93896484375,
+											"width": 266.208984375,
 											"height": 83
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 56,
 									"top": 448,
-									"width": 253.93896484375,
+									"width": 266.208984375,
 									"height": 106,
 									"nameLabel": {
 										"$ref": "AAAAAAF7Fgo3SqWrSl0="
@@ -921,7 +921,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 1014,
+											"left": 1019,
 											"top": 99,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -938,7 +938,7 @@
 												"$ref": "AAAAAAF7FhCWLaX1KbY="
 											},
 											"font": "Arial;13;0",
-											"left": 990,
+											"left": 999,
 											"top": 99,
 											"height": 13,
 											"alpha": 0.5235987755982988,
@@ -972,7 +972,7 @@
 									"tail": {
 										"$ref": "AAAAAAF7FgQTOaUpJ1M="
 									},
-									"points": "965:120;1064:120",
+									"points": "974:120;1064:120",
 									"nameLabel": {
 										"$ref": "AAAAAAF7FhCWLaX2Tbw="
 									},
@@ -1001,7 +1001,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 349,
+											"left": 355,
 											"top": 521,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -1035,7 +1035,7 @@
 												"$ref": "AAAAAAF7FhdIpqZDJVU="
 											},
 											"font": "Arial;13;0",
-											"left": 334,
+											"left": 346,
 											"top": 520,
 											"height": 13,
 											"alpha": -0.5235987755982988,
@@ -1052,7 +1052,7 @@
 									"tail": {
 										"$ref": "AAAAAAF7FglTTKWHEhY="
 									},
-									"points": "392:512;309:512",
+									"points": "392:512;321:512",
 									"nameLabel": {
 										"$ref": "AAAAAAF7FhdIpqZEfNs="
 									},
@@ -1838,7 +1838,7 @@
 											"top": 333,
 											"width": 274.1435546875,
 											"height": 13,
-											"text": "TENANT_APARTMENTS"
+											"text": "TENANT_APARTMENT"
 										},
 										{
 											"_type": "ERDColumnCompartmentView",
@@ -1879,20 +1879,35 @@
 													"top": 371,
 													"width": 264.1435546875,
 													"height": 13
+												},
+												{
+													"_type": "ERDColumnView",
+													"_id": "AAAAAAF7IDHcBBW2aPE=",
+													"_parent": {
+														"$ref": "AAAAAAF7Fkygrqhzg48="
+													},
+													"model": {
+														"$ref": "AAAAAAF7IDHb8xWz5Mo="
+													},
+													"font": "Arial;13;0",
+													"left": 693,
+													"top": 386,
+													"width": 264.1435546875,
+													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 688,
 											"top": 351,
 											"width": 274.1435546875,
-											"height": 38
+											"height": 53
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 688,
 									"top": 328,
 									"width": 274.1435546875,
-									"height": 61,
+									"height": 76,
 									"nameLabel": {
 										"$ref": "AAAAAAF7Fkygrqhyd6g="
 									},
@@ -2372,7 +2387,8 @@
 									"name": "warehouse_number",
 									"type": "NUMBER",
 									"length": "2, 0",
-									"foreignKey": true
+									"foreignKey": true,
+									"unique": true
 								}
 							]
 						},
@@ -2409,6 +2425,17 @@
 								},
 								{
 									"_type": "ERDColumn",
+									"_id": "AAAAAAF7FhJUzKYTV0k=",
+									"_parent": {
+										"$ref": "AAAAAAF7FgcOtaVV7jk="
+									},
+									"name": "tenant_id",
+									"type": "NUMBER",
+									"length": "9, 0",
+									"primaryKey": true
+								},
+								{
+									"_type": "ERDColumn",
 									"_id": "AAAAAAF7Fg5Y06XoMoY=",
 									"_parent": {
 										"$ref": "AAAAAAF7FgcOtaVV7jk="
@@ -2416,16 +2443,6 @@
 									"name": "end_date",
 									"type": "DATE",
 									"length": 0
-								},
-								{
-									"_type": "ERDColumn",
-									"_id": "AAAAAAF7FhJUzKYTV0k=",
-									"_parent": {
-										"$ref": "AAAAAAF7FgcOtaVV7jk="
-									},
-									"name": "tenant_id",
-									"type": "NUMBER",
-									"length": "9, 0"
 								},
 								{
 									"_type": "ERDColumn",
@@ -2639,7 +2656,8 @@
 									},
 									"name": "payment_method",
 									"type": "VARCHAR",
-									"length": "20"
+									"length": "20",
+									"nullable": true
 								},
 								{
 									"_type": "ERDColumn",
@@ -2649,7 +2667,8 @@
 									},
 									"name": "paid_date",
 									"type": "DATE",
-									"length": 0
+									"length": 0,
+									"nullable": true
 								},
 								{
 									"_type": "ERDColumn",
@@ -2760,7 +2779,8 @@
 									"name": "work_number",
 									"type": "NUMBER",
 									"length": "38, 0",
-									"foreignKey": true
+									"foreignKey": true,
+									"unique": true
 								}
 							]
 						},
@@ -2988,7 +3008,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF7Fd9ICzvGrRo="
 							},
-							"name": "TENANT_APARTMENTS",
+							"name": "TENANT_APARTMENT",
 							"ownedElements": [
 								{
 									"_type": "ERDRelationship",
@@ -3043,6 +3063,16 @@
 									"length": "2, 0",
 									"primaryKey": true,
 									"foreignKey": true
+								},
+								{
+									"_type": "ERDColumn",
+									"_id": "AAAAAAF7IDHb8xWz5Mo=",
+									"_parent": {
+										"$ref": "AAAAAAF7Fkygrqhv0GU="
+									},
+									"name": "start_date",
+									"type": "DATE",
+									"length": 0
 								}
 							]
 						}
