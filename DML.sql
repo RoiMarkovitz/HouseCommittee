@@ -98,6 +98,7 @@ EXECUTE add_apartment_monthly_payment('20/OCT/2015', 7);
 EXECUTE add_apartment_general_payment('20/OCT/2015', 'Damage', 2500, 2);
 EXECUTE add_apartment_general_payment('14/OCT/2015', 'Damage', 1700, 4);
 
+
 EXECUTE add_service_provider(517555777, 'TopClean', '1297 Ben Gurion, Tel Aviv', '353.123.5555');
 EXECUTE add_service_provider(113545897, 'BestClean', '93091 Prachim, Petah-Tikva', '353.123.6666');
 EXECUTE add_service_provider(113566896, 'TopPaint', '2017 Ganim, Netanya', '353.123.7777');

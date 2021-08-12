@@ -1,22 +1,9 @@
 --- $$$$$ FUNCTIONS $$$$$ ---
 -- All functions to retrieve information to the GUI.
 
---select count(*) from all_tab_columns where table_name = 'APARTMENT_PAYMENTS';
---select count(*) from apartment_payments;
+
 
 -- ##### GENERAL ##### --
-
-
-
-
-/*
-SELECT
-(SELECT SUM(amount) FROM apartment_payments WHERE paid_date IS NOT NULL) as income,
-(SELECT SUM(amount) FROM service_payments WHERE paid_date IS NOT NULL) as expenses,
-(SELECT SUM(amount) FROM apartment_payments WHERE paid_date IS NOT NULL) - 
-(SELECT SUM(amount) FROM service_payments WHERE paid_date IS NOT NULL) as balance 
-FROM dual;
-*/
 
 create or replace TYPE balance_array AS VARRAY(3) OF NUMBER(38,2); 
 
@@ -37,6 +24,7 @@ BEGIN
     balance_details(3) := var_balance;
     RETURN balance_details;   
 END;
+
 select calculate_balance() from dual;
 select * from table(calculate_balance());
 
@@ -267,9 +255,7 @@ BEGIN
         apart_hist_details(var_counter) := apart_hist_obj_type(row_ap_h.apartment_number,
         row_ap_h.start_date, row_ap_h.tenant_id, row_ap_h.end_date, row_ap_h.first_name,
         row_ap_h.last_name, row_ap_h.phone_number);
-                         
-        DBMS_OUTPUT.PUT_LINE(row_ap_h.apartment_number || ', ' || row_ap_h.start_date ||
-        ', ' || row_ap_h.tenant_id || ', ' || row_ap_h.first_name);
+        
     END LOOP;
     CLOSE cur_ap_h;
     RETURN apart_hist_details;
@@ -295,12 +281,14 @@ create or replace TYPE apartment_obj_type AS OBJECT
 
 create or replace TYPE apartments_tbl_type IS TABLE OF apartment_obj_type;
 
-/*
+
+create or replace view view_all_apartment
+as
 SELECT a.apartment_number, floor, rooms, apartment_size, warehouse_number, 
-    (SELECT warehouse_size FROM warehouse w WHERE a.warehouse_number = w.warehouse_number) as warehouse_size,
-    (SELECT calculate_tariff(a.apartment_number) FROM dual) as tariff      
-    FROM apartment a;   
-*/
+(SELECT warehouse_size FROM warehouse w WHERE a.warehouse_number = w.warehouse_number) as warehouse_size,
+(SELECT calculate_tariff(a.apartment_number) FROM dual) as tariff      
+FROM apartment a; 
+
 
 create or replace FUNCTION get_all_apartment
 RETURN apartments_tbl_type
@@ -316,10 +304,7 @@ IS
         tariff NUMBER(9,2)
     );
     apartment_details apartments_tbl_type := apartments_tbl_type();    
-    CURSOR cur_apartments IS SELECT a.apartment_number, floor, rooms, apartment_size, warehouse_number, 
-    (SELECT warehouse_size FROM warehouse w WHERE a.warehouse_number = w.warehouse_number),
-    (SELECT calculate_tariff(a.apartment_number) FROM dual)      
-    FROM apartment a; 
+    CURSOR cur_apartments IS SELECT * FROM view_all_apartment;
     row_apartments t_apartment;  
     var_counter PLS_INTEGER := 0;
 BEGIN                                
@@ -351,7 +336,7 @@ create or replace TYPE tenant_obj_type AS OBJECT
         first_name VARCHAR(30),
         last_name VARCHAR(30),
         phone_number VARCHAR(15),
-        committee_member NUMBER(1,0),
+        committee_member VARCHAR(30),
         apartment_number NUMBER(2,0),
         start_date DATE
     );
@@ -359,6 +344,14 @@ create or replace TYPE tenant_obj_type AS OBJECT
 create or replace TYPE tenant_tbl_type IS TABLE OF tenant_obj_type;
 
 
+create or replace view view_all_tenants
+as
+SELECT t.tenant_id, first_name, last_name, phone_number, 
+DECODE (committee_member, '1', 'yes', 'no') as committee_member, a.apartment_number, a.start_date 
+FROM tenant t, tenant_apartment a
+WHERE t.tenant_id = a.tenant_id;
+
+  
 create or replace FUNCTION get_all_tenants
 RETURN tenant_tbl_type
 IS
@@ -368,15 +361,13 @@ IS
         first_name tenant.first_name%type,
         last_name tenant.last_name%type,
         phone_number tenant.phone_number%type,
-        committee_member tenant.committee_member%type,
+        committee_member VARCHAR(30),
         apartment_number tenant_apartment.apartment_number%type,
         start_date tenant_apartment.start_date%type
     );
     
     tenant_details tenant_tbl_type := tenant_tbl_type();    
-    CURSOR cur_tenants IS SELECT t.*, a.apartment_number, a.start_date 
-    FROM tenant t, tenant_apartment a
-    WHERE t.tenant_id = a.tenant_id;
+    CURSOR cur_tenants IS SELECT * FROM view_all_tenants;
     row_tenants t_tenants;  
     var_counter PLS_INTEGER := 0;
 BEGIN                                
@@ -453,8 +444,7 @@ create or replace TYPE service_payments_obj_type AS OBJECT
 
 create or replace TYPE service_payments_tbl_type IS TABLE OF service_payments_obj_type;
 
-
-create or replace FUNCTION get_all_service_payments
+create or replace FUNCTION get_all_service_payments_ascend
 RETURN service_payments_tbl_type
 IS
     payment_details service_payments_tbl_type := service_payments_tbl_type();    
@@ -476,11 +466,36 @@ BEGIN
     RETURN payment_details;
 END;
 
-select get_all_service_payments() from dual;
-select * from table(get_all_service_payments());
+select get_all_service_payments_ascend() from dual;
+select * from table(get_all_service_payments_ascend());
+
+create or replace FUNCTION get_all_service_payments_desc
+RETURN service_payments_tbl_type
+IS
+    payment_details service_payments_tbl_type := service_payments_tbl_type();    
+    CURSOR cur_payments IS SELECT * from service_payments ORDER BY payment_number DESC;   
+    row_payments service_payments%rowtype;  
+    var_counter PLS_INTEGER := 0;
+BEGIN                                
+    OPEN cur_payments;
+    LOOP
+        var_counter := var_counter + 1;
+        FETCH cur_payments INTO row_payments;
+        EXIT WHEN cur_payments%NOTFOUND;
+        payment_details.extend();
+        payment_details(var_counter) := service_payments_obj_type(row_payments.payment_number,
+        row_payments.paid_date, row_payments.amount, row_payments.business_number,
+        row_payments.work_number);                             
+    END LOOP;
+    CLOSE cur_payments;
+    RETURN payment_details;
+END;
+
+select get_all_service_payments_desc() from dual;
+select * from table(get_all_service_payments_desc());
+
 
 -- ##### SERVICE_PROVIDER  ##### -- 
-
 
 create or replace TYPE providers_obj_type AS OBJECT
     (
@@ -524,7 +539,7 @@ create or replace TYPE elections_obj_type AS OBJECT
         election_date DATE,
         tenant_id NUMBER(9,0),
         votes NUMBER(3,0),
-        chosen NUMBER(1,0)      
+        s_chosen VARCHAR(20)     
     );
 
 create or replace TYPE elections_tbl_type IS TABLE OF elections_obj_type;
@@ -533,9 +548,19 @@ create or replace TYPE elections_tbl_type IS TABLE OF elections_obj_type;
 create or replace FUNCTION get_all_elections
 RETURN elections_tbl_type
 IS
+    TYPE t_elections IS RECORD
+    (
+        election_date elections.election_date%type,
+        tenant_id elections.tenant_id%type,
+        votes elections.votes%type,
+        s_chosen VARCHAR(20)
+    );
+
     election_details elections_tbl_type := elections_tbl_type();    
-    CURSOR cur_election IS SELECT * from elections;   
-    row_election elections%rowtype;  
+    CURSOR cur_election IS SELECT election_date, tenant_id, votes, 
+    DECODE(chosen, '1', 'elected', 'not elected') as chosen
+    FROM elections;   
+    row_election t_elections;  
     var_counter PLS_INTEGER := 0;
 BEGIN                                
     OPEN cur_election;
@@ -545,7 +570,7 @@ BEGIN
         EXIT WHEN cur_election%NOTFOUND;
         election_details.extend();
         election_details(var_counter) := elections_obj_type(row_election.election_date,
-        row_election.tenant_id, row_election.votes, row_election.chosen);
+        row_election.tenant_id, row_election.votes, row_election.s_chosen);
                                
     END LOOP;
     CLOSE cur_election;

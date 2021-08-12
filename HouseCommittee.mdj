@@ -2793,8 +2793,7 @@
 									},
 									"name": "business_number",
 									"type": "NUMBER",
-									"length": "9, 0",
-									"foreignKey": true
+									"length": "9, 0"
 								},
 								{
 									"_type": "ERDColumn",
@@ -2897,8 +2896,7 @@
 									},
 									"name": "tenant_id",
 									"type": "NUMBER",
-									"length": "9, 0",
-									"foreignKey": true
+									"length": "9, 0"
 								}
 							]
 						},
@@ -3002,8 +3000,7 @@
 									"name": "tenant_id",
 									"type": "NUMBER",
 									"length": "9, 0",
-									"primaryKey": true,
-									"foreignKey": true
+									"primaryKey": true
 								},
 								{
 									"_type": "ERDColumn",

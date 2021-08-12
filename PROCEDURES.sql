@@ -134,6 +134,7 @@ BEGIN
     in_start_date);   
 END;
 
+
 -- ##### TENANT ##### -- 
 
 create or replace PROCEDURE add_tenant 
@@ -175,41 +176,55 @@ END;
 
 create or replace PROCEDURE remove_tenant
 ( 
-    in_tenant_id tenant.tenant_id%type      
+    in_tenant_id tenant.tenant_id%type    
 )
 IS
-BEGIN  
+BEGIN      
     DELETE FROM tenant 
     WHERE tenant_id = in_tenant_id;
+    
 END;
 
-/*
 
--- Maybe change BEFORE DELETE to INSTEAD OF DELETE, it may solve the error
--- and then i will DELETE it inside myself
 CREATE OR REPLACE TRIGGER trig_remove_tenant 
 BEFORE DELETE ON tenant
 FOR EACH ROW
 DECLARE
-    var_apartment_number apartment.apartment_number%type;
-    var_start_date DATE;    
-    var_tenant_id tenant.tenant_id%type;
-    var_first_name tenant.first_name%type;
-    var_last_name tenant.last_name%type;
-    var_phone_number tenant.phone_number%type;  
+    PRAGMA AUTONOMOUS_TRANSACTION;       
+    TYPE t_apart_tenant IS RECORD
+    (
+        apartment_number tenant_apartment.apartment_number%type,
+        start_date tenant_apartment.start_date%type,
+        tenant_id tenant.tenant_id%type,
+        first_name tenant.first_name%type,
+        last_name tenant.last_name%type,
+        phone_number tenant.phone_number%type
+    );   
+    CURSOR cur_tenant_apartment IS SELECT apartment_number, start_date, t.tenant_id, 
+    first_name, last_name, phone_number    
+    FROM tenant_apartment a, tenant t
+    WHERE :OLD.tenant_id = a.tenant_id AND :OLD.tenant_id = t.tenant_id;    
+    row_tenant_apartment t_apart_tenant;       
 BEGIN
-    SELECT a.apartment_number, a.start_date, b.tenant_id, b.first_name, b.last_name, b.phone_number  
-    INTO var_apartment_number, var_start_date, var_tenant_id, var_first_name,
-    var_last_name, var_phone_number
-    FROM tenant_apartment a, tenant b
-    WHERE :OLD.tenant_id = a.tenant_id AND :OLD.tenant_id = b.tenant_id;   
-    INSERT INTO apartment_history VALUES(var_apartment_number, var_start_date,
-    var_tenant_id, SYSDATE, var_first_name, var_last_name, var_phone_number);    
+    OPEN cur_tenant_apartment;
+    LOOP
+    FETCH cur_tenant_apartment INTO row_tenant_apartment;
+    EXIT WHEN cur_tenant_apartment%NOTFOUND;
+    INSERT INTO apartment_history VALUES(row_tenant_apartment.apartment_number, 
+    row_tenant_apartment.start_date, row_tenant_apartment.tenant_id,
+    SYSDATE, row_tenant_apartment.first_name, row_tenant_apartment.last_name,
+    row_tenant_apartment.phone_number);
+    END LOOP;
+    CLOSE cur_tenant_apartment;
+    COMMIT;
+  
 END;
 
---DELETE FROM tenant where tenant_id = 555999231;
 
-*/
+EXECUTE remove_tenant(111111111);
+
+
+
 
 
 -- ##### WORKS ##### -- 
@@ -229,6 +244,7 @@ BEGIN
     SELECT work_seq.NEXTVAL INTO var_wnum FROM dual;
     :NEW.work_number := var_wnum;
 END;
+
 
 create or replace PROCEDURE add_work
 ( 

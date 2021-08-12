@@ -80,8 +80,8 @@ CREATE TABLE works
 work_number NUMBER(38,0) PRIMARY KEY,
 work_type VARCHAR(30) NOT NULL,
 price NUMBER(9,2) NOT NULL CHECK (price > 0),
-business_number NUMBER(9,0) REFERENCES service_provider(business_number),
-tenant_id NUMBER(9,0) REFERENCES tenant(tenant_id) 
+business_number NUMBER(9,0) REFERENCES service_provider(business_number) ON DELETE CASCADE,
+tenant_id NUMBER(9,0)  
 );
 
 
@@ -90,7 +90,7 @@ CREATE TABLE service_payments
 payment_number NUMBER(38,0) PRIMARY KEY,
 paid_date DATE NOT NULL,
 amount NUMBER(9,2) NOT NULL CHECK (amount > 0),
-business_number NUMBER(9,0) REFERENCES service_provider(business_number),
+business_number NUMBER(9,0),
 work_number NUMBER(38,0) UNIQUE REFERENCES works(work_number) 
 );
 
@@ -98,7 +98,7 @@ work_number NUMBER(38,0) UNIQUE REFERENCES works(work_number)
 CREATE TABLE elections
 (
 election_date DATE,
-tenant_id NUMBER(9,0) REFERENCES tenant(tenant_id),
+tenant_id NUMBER(9,0),
 votes NUMBER(3,0) DEFAULT 0 NOT NULL CHECK (votes >= 0),
 chosen NUMBER(1,0) NOT NULL CHECK (chosen = 0 or chosen = 1),
 PRIMARY KEY(election_date, tenant_id)
