@@ -83,18 +83,20 @@ first_name, last_name, phone_number)
 VALUES (8, '19/APR/2011', 449325145, '05/NOV/2018',  'Michael', 'Hartstein', '515.123.5555');
 
 
-EXECUTE add_apartment_monthly_payment('15/FEB/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/MAR/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/APR/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/MAY/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/JUN/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/JUL/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/AUG/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/SEP/2015', 'Nandita', 'Sarchand', 2);
-EXECUTE add_apartment_monthly_payment('15/OCT/2015', 'Nandita', 'Sarchand', 2); 
-
-EXECUTE add_apartment_general_payment('20/OCT/2015', 'Damage', 'Nandita', 'Sarchand', 2500, 2);
-
+EXECUTE add_apartment_monthly_payment('15/FEB/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/MAR/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/APR/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/MAY/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/JUN/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/JUL/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/AUG/2015', 2);
+EXECUTE add_apartment_monthly_payment('15/SEP/2015', 2);
+EXECUTE add_apartment_monthly_payment('20/OCT/2015', 2); 
+EXECUTE add_apartment_monthly_payment('15/AUG/2015', 5);
+EXECUTE add_apartment_monthly_payment('15/APR/2015', 1);
+EXECUTE add_apartment_monthly_payment('20/OCT/2015', 7);
+EXECUTE add_apartment_general_payment('20/OCT/2015', 'Damage', 2500, 2);
+EXECUTE add_apartment_general_payment('14/OCT/2015', 'Damage', 1700, 4);
 
 EXECUTE add_service_provider(517555777, 'TopClean', '1297 Ben Gurion, Tel Aviv', '353.123.5555');
 EXECUTE add_service_provider(113545897, 'BestClean', '93091 Prachim, Petah-Tikva', '353.123.6666');

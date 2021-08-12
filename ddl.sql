@@ -54,15 +54,15 @@ CHECK (end_date > start_date)
 
 CREATE TABLE apartment_payments
 (
-payment_due_date DATE,
-reason VARCHAR(20),
-first_name VARCHAR(30) NOT NULL,
-last_name VARCHAR(30) NOT NULL,
+payment_number NUMBER(38,0) PRIMARY KEY,
+payment_due_date DATE NOT NULL,
+reason VARCHAR(20) NOT NULL,
+first_name VARCHAR(30),
+last_name VARCHAR(30),
 amount NUMBER(9,2) NOT NULL CHECK (amount > 0),
 payment_method VARCHAR(20) CHECK(payment_method = 'cash' or payment_method = 'credit' or payment_method IS NULL),
 paid_date DATE,
-apartment_number NUMBER(2,0) REFERENCES apartment(apartment_number) ON DELETE CASCADE,
-PRIMARY KEY (payment_due_date, reason) 
+apartment_number NUMBER(2,0) REFERENCES apartment(apartment_number) ON DELETE CASCADE 
 );
 
 
@@ -100,7 +100,9 @@ CREATE TABLE elections
 election_date DATE,
 tenant_id NUMBER(9,0) REFERENCES tenant(tenant_id),
 votes NUMBER(3,0) DEFAULT 0 NOT NULL CHECK (votes >= 0),
-chosen NUMBER(1,0) CHECK (chosen = 0 or chosen = 1 or chosen IS NULL),
+chosen NUMBER(1,0) NOT NULL CHECK (chosen = 0 or chosen = 1),
 PRIMARY KEY(election_date, tenant_id)
 );
+
+
 
