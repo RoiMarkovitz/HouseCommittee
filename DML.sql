@@ -50,7 +50,7 @@ EXECUTE add_tenant(222333333, 'Amit', 'Banda', '750.124.1731', 0, 12, '20/JAN/20
 EXECUTE add_tenant(222344444, 'Winston', 'Tavlor', '750.124.1738', 0, 12, '28/JAN/2010');
 
 
--- should be kept. initial values for data
+-- initial values for data presentation
 INSERT INTO apartment_history (apartment_number, start_date, tenant_id, end_date, 
 first_name, last_name, phone_number)    
 VALUES (2, '20/FEB/2015', 555666777, '20/FEB/2018',  'Nandita', 'Sarchand', '650.509.1876');

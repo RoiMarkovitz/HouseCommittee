@@ -8,12 +8,13 @@ except Exception as err:
 else:
     try:
         cur = conn.cursor()
-        data = [124123654, 'TopClean', '1297 Ben Gurion, Tel Aviv', '353.123.5555']
-       # data = [13]
-        cur.callproc('add_service_provider', data)
+       # data = ['18-JUL-2010', 111234561]
+        #data = ['04-MAY-2010', 333333333, 0, 0]
+        data = ['18-JUL-2010', 111234561, 2,  0, ]
+        cur.callproc('update_apartment_payment', data)
        # result = cur.callfunc('calculate_tariff', int, data)
     except Exception as err:
-        print('Exception occurred while executing the procedure ', err)
+        print('Exception occurred while executing the procedure. ', err)
       #  print('Exception occurred while executing the func  ', err)
     else:
         print("Procedure Executed")

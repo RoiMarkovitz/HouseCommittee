@@ -1,9 +1,8 @@
 -- Initiating database: creating tables 
 
-
 CREATE TABLE tenant
 (
-tenant_id NUMBER(9,0) PRIMARY KEY,
+tenant_id NUMBER(9,0) PRIMARY KEY CHECK (tenant_id > 99999999),
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 phone_number VARCHAR(15),
@@ -63,13 +62,13 @@ last_name VARCHAR(30),
 amount NUMBER(9,2) NOT NULL CHECK (amount > 0),
 payment_method VARCHAR(20) CHECK(payment_method = 'cash' or payment_method = 'credit' or payment_method IS NULL),
 paid_date DATE,
-apartment_number NUMBER(2,0) REFERENCES apartment(apartment_number) ON DELETE CASCADE 
+apartment_number NUMBER(2,0) REFERENCES apartment(apartment_number) ON DELETE CASCADE
 );
 
 
 CREATE TABLE service_provider
 (
-business_number NUMBER(9,0) PRIMARY KEY,
+business_number NUMBER(9,0) PRIMARY KEY CHECK (business_number > 99999999),
 provider_name VARCHAR(30) NOT NULL,
 address VARCHAR(40),
 phone_number VARCHAR(15)
@@ -99,7 +98,7 @@ work_number NUMBER(38,0) UNIQUE REFERENCES works(work_number)
 CREATE TABLE elections
 (
 election_date DATE,
-tenant_id NUMBER(9,0),
+tenant_id NUMBER(9,0) CHECK (tenant_id > 99999999),
 votes NUMBER(3,0) DEFAULT 0 NOT NULL CHECK (votes >= 0),
 chosen NUMBER(1,0) NOT NULL CHECK (chosen = 0 or chosen = 1),
 PRIMARY KEY(election_date, tenant_id)

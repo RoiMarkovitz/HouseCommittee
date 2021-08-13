@@ -28,7 +28,6 @@ END;
 --select calculate_balance() from dual;
 --select * from table(calculate_balance());
 
-
 -- ##### APARTMENT_PAYMENTS ##### --
 
 create or replace FUNCTION calculate_tariff
@@ -87,9 +86,18 @@ IS
     var_payment_method apartment_payments.payment_method%type;  
     var_paid_date apartment_payments.paid_date%type;
     var_apartment_number apartment_payments.apartment_number%type;
-       
+    var_payment_number apartment_payments.payment_number%type;  
     not_paid EXCEPTION;
-BEGIN     
+BEGIN  
+    BEGIN
+    SELECT payment_number INTO var_payment_number 
+    FROM apartment_payments WHERE payment_number = in_payment_number;
+    
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+         raise_application_error(-20005, 'payment was not found.');
+    END;
+
     SELECT payment_method, paid_date
     INTO var_payment_method, var_paid_date
     FROM apartment_payments 
@@ -165,7 +173,15 @@ IS
     AND paid_date IS NULL;   
     row_ap_payment apartment_payments%rowtype;  
     var_counter PLS_INTEGER := 0;
-BEGIN                                
+    invalid_range EXCEPTION;
+BEGIN 
+    IF  in_apartment_min_range > in_apartment_max_range 
+    OR  (in_apartment_max_range > 13 OR in_apartment_max_range < 1)
+    OR  (in_apartment_min_range > 13 OR in_apartment_min_range < 1)
+    THEN
+        RAISE invalid_range;
+    END IF;
+    
     OPEN cur_ap_payment;
     LOOP
         var_counter := var_counter + 1;
@@ -180,6 +196,11 @@ BEGIN
     END LOOP;
     CLOSE cur_ap_payment;
     RETURN apart_payment_details;
+    
+EXCEPTION
+    WHEN invalid_range THEN
+    raise_application_error (-20004,'Apartment range must be between 1 and 13. Min range no more than max range');
+   
 END;
 
 
@@ -200,7 +221,13 @@ IS
     AND paid_date IS NULL;   
     row_ap_payment apartment_payments%rowtype;  
     var_counter PLS_INTEGER := 0;
-BEGIN                                
+    invalid_range EXCEPTION;
+BEGIN 
+    IF  in_apartment_min_range > in_apartment_max_range   
+    THEN
+        RAISE invalid_range;
+    END IF;
+
     OPEN cur_ap_payment;
     LOOP
         var_counter := var_counter + 1;
@@ -215,11 +242,19 @@ BEGIN
     END LOOP;
     CLOSE cur_ap_payment;
     RETURN apart_payment_details;
+
+EXCEPTION
+    WHEN invalid_range THEN
+    raise_application_error (-20004,'Max date must be higher than min date.');   
+    
 END;
 
 
 --select * from table(get_apartments_owes_by_date_range
 --(TO_DATE('10/01/2015', 'DD/MM/YYYY'), TO_DATE('20/07/2015', 'DD/MM/YYYY')));
+
+--select * from table(get_apartments_owes_by_date_range
+--(TO_DATE('20/07/2015', 'DD/MM/YYYY'), TO_DATE('10/01/2015', 'DD/MM/YYYY') ));
 
 -- ##### APARTMENT_HISTORY ##### --
 
@@ -263,7 +298,6 @@ END;
 
 --select get_all_apartment_history() from dual;
 --select * from table(get_all_apartment_history());
-
 
 
 -- ##### APARTMENT + WAREHOUSE + TARIFF ##### --
@@ -464,6 +498,7 @@ BEGIN
     END LOOP;
     CLOSE cur_payments;
     RETURN payment_details;
+      
 END;
 
 --select get_all_service_payments_ascend() from dual;
@@ -530,7 +565,7 @@ BEGIN
 END;
 
 --select get_all_providers() from dual;
---select * from table(get_all_providers());
+select * from table(get_all_providers());
 
 -- ##### ELECTIONS  ##### --
 
