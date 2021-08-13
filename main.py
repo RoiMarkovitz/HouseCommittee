@@ -1,16 +1,26 @@
-# This is a sample Python script.
+import cx_Oracle
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+try:
+   #create a connection
+    conn = cx_Oracle.connect('c##homeuser/roi@//localhost:1521/xe')
+except Exception as err:
+    print('Exception occurred while creating a connection ', err)
+else:
+    try:
+        cur = conn.cursor()
+        data = [124123654, 'TopClean', '1297 Ben Gurion, Tel Aviv', '353.123.5555']
+       # data = [13]
+        cur.callproc('add_service_provider', data)
+       # result = cur.callfunc('calculate_tariff', int, data)
+    except Exception as err:
+        print('Exception occurred while executing the procedure ', err)
+      #  print('Exception occurred while executing the func  ', err)
+    else:
+        print("Procedure Executed")
+      #  print("Result : ", result)
+    finally:
+        conn.commit()
+        #conn.rollback()
+        cur.close()
+finally:
+    conn.close()

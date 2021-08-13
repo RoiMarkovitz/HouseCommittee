@@ -221,10 +221,7 @@ BEGIN
 END;
 
 
-EXECUTE remove_tenant(111111111);
-
-
-
+--EXECUTE remove_tenant(111111111);
 
 
 -- ##### WORKS ##### -- 

@@ -1,5 +1,6 @@
 -- Initiating database: creating tables 
 
+
 CREATE TABLE tenant
 (
 tenant_id NUMBER(9,0) PRIMARY KEY,

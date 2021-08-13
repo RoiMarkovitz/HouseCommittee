@@ -25,8 +25,8 @@ BEGIN
     RETURN balance_details;   
 END;
 
-select calculate_balance() from dual;
-select * from table(calculate_balance());
+--select calculate_balance() from dual;
+--select * from table(calculate_balance());
 
 
 -- ##### APARTMENT_PAYMENTS ##### --
@@ -183,8 +183,8 @@ BEGIN
 END;
 
 
-select * from table(get_apartments_owes_by_apartment_range(1, 5));
-select * from apartment_payments;
+--select * from table(get_apartments_owes_by_apartment_range(1, 5));
+--select * from apartment_payments;
 
 
 create or replace FUNCTION get_apartments_owes_by_date_range
@@ -218,8 +218,8 @@ BEGIN
 END;
 
 
-select * from table(get_apartments_owes_by_date_range
-(TO_DATE('10/01/2015', 'DD/MM/YYYY'), TO_DATE('20/07/2015', 'DD/MM/YYYY')));
+--select * from table(get_apartments_owes_by_date_range
+--(TO_DATE('10/01/2015', 'DD/MM/YYYY'), TO_DATE('20/07/2015', 'DD/MM/YYYY')));
 
 -- ##### APARTMENT_HISTORY ##### --
 
@@ -261,8 +261,8 @@ BEGIN
     RETURN apart_hist_details;
 END;
 
-select get_all_apartment_history() from dual;
-select * from table(get_all_apartment_history());
+--select get_all_apartment_history() from dual;
+--select * from table(get_all_apartment_history());
 
 
 
@@ -324,8 +324,8 @@ BEGIN
     RETURN apartment_details;
 END;
 
-select get_all_apartment() from dual;
-select * from table(get_all_apartment());
+--select get_all_apartment() from dual;
+--select * from table(get_all_apartment());
 
 
 -- ##### TENANT + TENANT_APARTMENT ##### -- 
@@ -387,8 +387,8 @@ BEGIN
     RETURN tenant_details;
 END;
 
-select get_all_tenants() from dual;
-select * from table(get_all_tenants());
+--select get_all_tenants() from dual;
+--select * from table(get_all_tenants());
 
 
 -- ##### WORKS ##### -- 
@@ -427,8 +427,8 @@ BEGIN
     RETURN work_details;
 END;
 
-select get_all_works() from dual;
-select * from table(get_all_works());
+--select get_all_works() from dual;
+--select * from table(get_all_works());
 
 
 -- ##### SERVICE_PAYMENTS ##### -- 
@@ -466,8 +466,8 @@ BEGIN
     RETURN payment_details;
 END;
 
-select get_all_service_payments_ascend() from dual;
-select * from table(get_all_service_payments_ascend());
+--select get_all_service_payments_ascend() from dual;
+--select * from table(get_all_service_payments_ascend());
 
 create or replace FUNCTION get_all_service_payments_desc
 RETURN service_payments_tbl_type
@@ -491,8 +491,8 @@ BEGIN
     RETURN payment_details;
 END;
 
-select get_all_service_payments_desc() from dual;
-select * from table(get_all_service_payments_desc());
+--select get_all_service_payments_desc() from dual;
+--select * from table(get_all_service_payments_desc());
 
 
 -- ##### SERVICE_PROVIDER  ##### -- 
@@ -529,8 +529,8 @@ BEGIN
     RETURN providers_details;
 END;
 
-select get_all_providers() from dual;
-select * from table(get_all_providers());
+--select get_all_providers() from dual;
+--select * from table(get_all_providers());
 
 -- ##### ELECTIONS  ##### --
 
@@ -577,6 +577,6 @@ BEGIN
     RETURN election_details;
 END;
 
-select get_all_elections() from dual;
-select * from table(get_all_elections());
+--select get_all_elections() from dual;
+--select * from table(get_all_elections());
 
