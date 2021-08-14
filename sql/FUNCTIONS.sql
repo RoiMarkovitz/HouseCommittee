@@ -59,11 +59,11 @@ create or replace TYPE apart_payments_obj_type AS OBJECT
     (
         payment_number NUMBER(38,0),
         payment_due_date DATE,
-        reason VARCHAR(20),
-        first_name VARCHAR(30),
-        last_name VARCHAR(30),
+        reason VARCHAR2(20),
+        first_name VARCHAR2(30),
+        last_name VARCHAR2(30),
         amount NUMBER(9,2),
-        payment_method VARCHAR(20),
+        payment_method VARCHAR2(20),
         paid_date DATE,
         apartment_number NUMBER(2,0)
     );
@@ -265,9 +265,9 @@ create or replace TYPE apart_hist_obj_type AS OBJECT
         start_date DATE,
         tenant_id NUMBER(9,0),
         end_date DATE,
-        first_name VARCHAR(30),
-        last_name VARCHAR(30),
-        phone_number VARCHAR(15)
+        first_name VARCHAR2(30),
+        last_name VARCHAR2(30),
+        phone_number VARCHAR2(15)
     );
 
 create or replace TYPE apart_hist_tbl_type IS TABLE OF apart_hist_obj_type;
@@ -367,10 +367,10 @@ END;
 create or replace TYPE tenant_obj_type AS OBJECT
     (
         tenant_id NUMBER(9,0),
-        first_name VARCHAR(30),
-        last_name VARCHAR(30),
-        phone_number VARCHAR(15),
-        committee_member VARCHAR(30),
+        first_name VARCHAR2(30),
+        last_name VARCHAR2(30),
+        phone_number VARCHAR2(15),
+        committee_member VARCHAR2(30),
         apartment_number NUMBER(2,0),
         start_date DATE
     );
@@ -395,7 +395,7 @@ IS
         first_name tenant.first_name%type,
         last_name tenant.last_name%type,
         phone_number tenant.phone_number%type,
-        committee_member VARCHAR(30),
+        committee_member VARCHAR2(30),
         apartment_number tenant_apartment.apartment_number%type,
         start_date tenant_apartment.start_date%type
     );
@@ -430,7 +430,7 @@ END;
 create or replace TYPE works_obj_type AS OBJECT
     (
         work_number NUMBER(38,0),
-        work_type VARCHAR(30),
+        work_type VARCHAR2(30),
         price NUMBER(9,2),
         business_number NUMBER(9,0),
         tenant_id NUMBER(9,0)
@@ -535,9 +535,9 @@ END;
 create or replace TYPE providers_obj_type AS OBJECT
     (
         business_number NUMBER(9,0),
-        provider_name VARCHAR(30),
-        address VARCHAR(40),
-        phone_number VARCHAR(15)
+        provider_name VARCHAR2(30),
+        address VARCHAR2(40),
+        phone_number VARCHAR2(15)
     );
 
 create or replace TYPE providers_tbl_type IS TABLE OF providers_obj_type;
@@ -574,7 +574,7 @@ create or replace TYPE elections_obj_type AS OBJECT
         election_date DATE,
         tenant_id NUMBER(9,0),
         votes NUMBER(3,0),
-        s_chosen VARCHAR(20)     
+        s_chosen VARCHAR2(20)     
     );
 
 create or replace TYPE elections_tbl_type IS TABLE OF elections_obj_type;
@@ -588,7 +588,7 @@ IS
         election_date elections.election_date%type,
         tenant_id elections.tenant_id%type,
         votes elections.votes%type,
-        s_chosen VARCHAR(20)
+        s_chosen VARCHAR2(20)
     );
 
     election_details elections_tbl_type := elections_tbl_type();    

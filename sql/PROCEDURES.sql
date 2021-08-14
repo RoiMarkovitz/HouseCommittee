@@ -339,7 +339,7 @@ END;
 
 create or replace PROCEDURE remove_tenant
 ( 
-    in_tenant_id tenant.tenant_id%type    
+    in_tenant_id tenant.tenant_id%type  
 )
 IS
      var_tenant_id tenant.tenant_id%type;
