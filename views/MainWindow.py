@@ -27,7 +27,6 @@ class MainWindow(BaseView):
         root = tk.Toplevel()
         WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Tenants',
                                  Constants.ICON_PATH, True, 'lavender')
-        #    root.protocol("WM_DELETE_WINDOW", lambda: self.on_closing(root, 1))
         tenants_window = TenantsMainWindow(root)
         root.mainloop()
 
@@ -36,7 +35,6 @@ class MainWindow(BaseView):
         root = tk.Toplevel()
         WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Apartments',
                                  Constants.ICON_PATH, True, 'lavender')
-        #    root.protocol("WM_DELETE_WINDOW", lambda: self.on_closing(root, 1))
         apartments_window = ApartmentsMainWindow(root)
         root.mainloop()
 
@@ -45,7 +43,6 @@ class MainWindow(BaseView):
         root = tk.Toplevel()
         WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Service Providers',
                                  Constants.ICON_PATH, True, 'lavender')
-        #    root.protocol("WM_DELETE_WINDOW", lambda: self.on_closing(root, 1))
         service_providers_window = ServiceProvidersMainWindow(root)
         root.mainloop()
 
@@ -54,10 +51,8 @@ class MainWindow(BaseView):
         root = tk.Toplevel()
         WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Balance',
                                  Constants.ICON_PATH, True, 'lavender')
-        #    root.protocol("WM_DELETE_WINDOW", lambda: self.on_closing(root, 1))
         balance_window = BalanceWindow(root)
         root.mainloop()
-
 
     def init_widgets(self):
         # frame that will consist the topic in the window
@@ -76,14 +71,14 @@ class MainWindow(BaseView):
 
         # create buttons custom_widgets and attach them to screen
         button_tenants = PrimaryButton(buttons_frame, "Tenants", 'white', 15, self.start_tenants_main_window).get_button()
-        button_tenants.grid(row=1, padx=5, pady=10)
+        button_tenants.grid(row=0, padx=5, pady=10)
         button_apartments = PrimaryButton(buttons_frame, "Apartments", 'white', 15, self.start_apartments_main_window).get_button()
-        button_apartments.grid(row=2, padx=5, pady=10)
+        button_apartments.grid(row=1, padx=5, pady=10)
         button_providers = PrimaryButton(buttons_frame, "Service Providers", 'white', 15, self.start_serivce_providers_main_window).get_button()
-        button_providers.grid(row=3, padx=5, pady=10)
+        button_providers.grid(row=2, padx=5, pady=10)
         button_balance = PrimaryButton(buttons_frame, "Balance", 'white', 15, self.start_balance_window).get_button()
-        button_balance.grid(row=4, padx=5, pady=10)
+        button_balance.grid(row=3, padx=5, pady=10)
 
         # create label widget to show error
-        self.label_error = Label(buttons_frame, text="", fg="red", bg='lavender', font=('Ariel', 18))
-        self.label_error.grid(row=5, pady=10)
+        # self.label_error = Label(buttons_frame, text="", fg="red", bg='lavender', font=('Ariel', 18))
+        # self.label_error.grid(row=4, pady=10)

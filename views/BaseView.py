@@ -22,7 +22,7 @@ class BaseView(object):
         self.label_error (Label): the label object
         """
         self.label_error['text'] = text
-        self.master.after(3000, self.clear_error_label)
+        self.master.after(4000, self.clear_error_label)
 
     def clear_error_label(self):
         """
