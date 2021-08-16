@@ -14,10 +14,12 @@ class ServiceProvidersPaymentsUpdateWindow(BaseView):
 
         self.init_widgets()
 
-    def add_provider_payment(self):
+    def update_provider_payment(self):
         try:
             cur = Connection.CONN.cursor()
-            cur.callproc('add_service_payment',  [DateUtil.date_converter(self.paid_date_stringVar.get()),
+            cur.callproc('update_service_payment',  [int(self.payment_number_stringVar.get()),
+                                                     DateUtil.date_converter(self.paid_date_stringVar.get()),
+                                                     int(self.amount_stringVar.get()), int(self.business_number_stringVar.get()),
                                                   int(self.work_number_stringVar.get())])
 
 
@@ -25,7 +27,7 @@ class ServiceProvidersPaymentsUpdateWindow(BaseView):
             print('Exception occurred while executing the procedure  ', err)
             self.activate_label_error(err)
         else:
-            print("add_service_payment procedure executed")
+            print("update_service_payment procedure executed")
             Connection.CONN.commit()
         finally:
             cur.close()
@@ -50,16 +52,40 @@ class ServiceProvidersPaymentsUpdateWindow(BaseView):
         errors_frame.place(relx=0.5, rely=0.9, anchor=CENTER)
 
         # create label widget for topic of the window
-        topic_label = TopicLabel(topic_frame, text="Add Service Provider Payment", size=40).get_label()
+        topic_label = TopicLabel(topic_frame, text="Update Service Provider Payment", size=40).get_label()
         topic_label.pack()
 
+        # define stringVar for payment_number input
+        self.payment_number_stringVar = StringVar(input_frame, value="Type Payment Number")
+        # create entry widget for payment_number, attach it to screen and bind mouse left click to it
+        payment_number_entry = Entry(input_frame, textvariable=self.payment_number_stringVar,
+                                width=30, font=('Ariel', 16))
+        payment_number_entry.bind("<Button-1>", self.clear_text)
+        payment_number_entry.grid(row=0, column=0, pady=10, columnspan=2)
+
         # define stringVar for paid_date input
-        self.paid_date_stringVar = StringVar(input_frame, value="Type paid date DD-M-YYYY")
+        self.paid_date_stringVar = StringVar(input_frame, value="Type paid date DD-MM-YYYY")
         # create entry widget for paid_date, attach it to screen and bind mouse left click to it
         paid_date_entry = Entry(input_frame, textvariable=self.paid_date_stringVar,
                                 width=30, font=('Ariel', 16))
         paid_date_entry.bind("<Button-1>", self.clear_text)
-        paid_date_entry.grid(row=0, column=0, pady=10, columnspan=2)
+        paid_date_entry.grid(row=1, column=0, pady=10, columnspan=2)
+
+        # define stringVar for amount input
+        self.amount_stringVar = StringVar(input_frame, value="Type Amount")
+        # create entry widget for amount, attach it to screen and bind mouse left click to it
+        amount_entry = Entry(input_frame, textvariable=self.amount_stringVar,
+                                  width=30, font=('Ariel', 16))
+        amount_entry.bind("<Button-1>", self.clear_text)
+        amount_entry.grid(row=2, column=0, pady=10, columnspan=2)
+
+        # define stringVar for business_number input
+        self.business_number_stringVar = StringVar(input_frame, value="Type Business Number (9 digits)")
+        # create entry widget for business_number, attach it to screen and bind mouse left click to it
+        business_number_entry = Entry(input_frame, textvariable=self.business_number_stringVar,
+                                  width=30, font=('Ariel', 16))
+        business_number_entry.bind("<Button-1>", self.clear_text)
+        business_number_entry.grid(row=3, column=0, pady=10, columnspan=2)
 
         # define stringVar for work_number input
         self.work_number_stringVar = StringVar(input_frame, value="Type Work Number")
@@ -67,11 +93,11 @@ class ServiceProvidersPaymentsUpdateWindow(BaseView):
         work_number_entry = Entry(input_frame, textvariable=self.work_number_stringVar,
                                 width=30, font=('Ariel', 16))
         work_number_entry.bind("<Button-1>", self.clear_text)
-        work_number_entry.grid(row=1, column=0, pady=10, columnspan=2)
+        work_number_entry.grid(row=4, column=0, pady=10, columnspan=2)
 
         # create button to submit input
-        button_submit = Button(input_frame, text="Submit", command=self.add_provider_payment)
-        button_submit.grid(row=4, column=0, pady=15, columnspan=2)
+        button_submit = Button(input_frame, text="Submit", command=self.update_provider_payment)
+        button_submit.grid(row=5, column=0, pady=15, columnspan=2)
 
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))

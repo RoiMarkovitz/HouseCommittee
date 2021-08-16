@@ -78,10 +78,12 @@ class TenantsElectionsAddWindow(BaseView):
         tenant_votes_entry.bind("<Button-1>", self.clear_text)
         tenant_votes_entry.grid(row=2, column=0, pady=10, columnspan=2)
 
-        tenant_not_chosen = Radiobutton(input_frame, text="Not Chosen", bg='lavender', variable=self.tenant_chosen, value=0)
+        tenant_not_chosen = Radiobutton(input_frame, text="Not Chosen", bg='lavender', font=('Ariel', 16),
+                                        variable=self.tenant_chosen, value=0)
         tenant_not_chosen.grid(row=3, column=0, pady=10, padx=10)
 
-        tenant_chosen = Radiobutton(input_frame, text="Chosen", bg='lavender', variable=self.tenant_chosen, value=1)
+        tenant_chosen = Radiobutton(input_frame, text="Chosen", bg='lavender', font=('Ariel', 16),
+                                    variable=self.tenant_chosen, value=1)
         tenant_chosen.grid(row=3, column=1, pady=10, padx=10)
 
         # create button to submit input

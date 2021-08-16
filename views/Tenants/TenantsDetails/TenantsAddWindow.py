@@ -58,7 +58,7 @@ class TenantsAddWindow(BaseView):
         self.tenant_id_stringVar = StringVar(input_frame, value="Type tenant id (9 digits)")
         # create entry widget for tenant_id, attach it to screen and bind mouse left click to it
         tenant_id_entry = Entry(input_frame, textvariable=self.tenant_id_stringVar,
-                                width=20, font=('Ariel', 16))
+                                width=30, font=('Ariel', 16))
         tenant_id_entry.bind("<Button-1>", self.clear_text)
         tenant_id_entry.grid(row=0, column=0, pady=10, columnspan=2)
 
@@ -66,7 +66,7 @@ class TenantsAddWindow(BaseView):
         self.tenant_first_name_stringVar = StringVar(input_frame, value="Type First Name")
         # create entry widget for tenant_first_name, attach it to screen and bind mouse left click to it
         tenant_first_name_entry = Entry(input_frame, textvariable=self.tenant_first_name_stringVar,
-                                width=20, font=('Ariel', 16))
+                                width=30, font=('Ariel', 16))
         tenant_first_name_entry.bind("<Button-1>", self.clear_text)
         tenant_first_name_entry.grid(row=1, column=0, pady=10, columnspan=2)
 
@@ -74,7 +74,7 @@ class TenantsAddWindow(BaseView):
         self.tenant_last_name_stringVar = StringVar(input_frame, value="Type Last Name")
         # create entry widget for tenant_last_name, attach it to screen and bind mouse left click to it
         tenant_last_name_entry = Entry(input_frame, textvariable=self.tenant_last_name_stringVar,
-                                        width=20, font=('Ariel', 16))
+                                        width=30, font=('Ariel', 16))
         tenant_last_name_entry.bind("<Button-1>", self.clear_text)
         tenant_last_name_entry.grid(row=2, column=0, pady=10, columnspan=2)
 
@@ -82,30 +82,32 @@ class TenantsAddWindow(BaseView):
         self.tenant_phone_number_stringVar = StringVar(input_frame, value="Type Phone Number")
         # create entry widget for tenant_phone_number, attach it to screen and bind mouse left click to it
         tenant_phone_number_entry = Entry(input_frame, textvariable=self.tenant_phone_number_stringVar,
-                                           width=20, font=('Ariel', 16))
+                                           width=30, font=('Ariel', 16))
         tenant_phone_number_entry.bind("<Button-1>", self.clear_text)
         tenant_phone_number_entry.grid(row=3, column=0, pady=10, columnspan=2)
 
-        tenant_not_chosen = Radiobutton(input_frame, text="Not Committee Member", bg='lavender', variable=self.committee_member,
+        tenant_not_chosen = Radiobutton(input_frame, text="Not Committee Member", bg='lavender', font=('Ariel', 14),
+                                        variable=self.committee_member,
                                         value=0)
         tenant_not_chosen.grid(row=4, column=0, pady=10, padx=10)
 
-        tenant_chosen = Radiobutton(input_frame, text="Committee Member", bg='lavender', variable=self.committee_member, value=1)
+        tenant_chosen = Radiobutton(input_frame, text="Committee Member", bg='lavender', font=('Ariel', 14),
+                                    variable=self.committee_member, value=1)
         tenant_chosen.grid(row=4, column=1, pady=10, padx=10)
 
         # define stringVar for tenant_apartment_number input
         self.tenant_apartment_number = StringVar(input_frame, value="Type apartment number")
         # create entry widget for tenant_apartment_number, attach it to screen and bind mouse left click to it
         tenant_apartment_number_entry = Entry(input_frame, textvariable=self.tenant_apartment_number,
-                                width=20, font=('Ariel', 16))
+                                width=30, font=('Ariel', 16))
         tenant_apartment_number_entry.bind("<Button-1>", self.clear_text)
         tenant_apartment_number_entry.grid(row=5, column=0, pady=10, columnspan=2)
 
         # define stringVar for start_date input
-        self.start_date_stringVar = StringVar(input_frame, value="Type date DD-MM-YYYY")
+        self.start_date_stringVar = StringVar(input_frame, value="Type start date DD-MM-YYYY")
         # create entry widget for start_date, attach it to screen and bind mouse left click to it
         start_date_entry = Entry(input_frame, textvariable=self.start_date_stringVar,
-                                    width=20, font=('Ariel', 16))
+                                    width=30, font=('Ariel', 16))
         start_date_entry.bind("<Button-1>", self.clear_text)
         start_date_entry.grid(row=6, column=0, pady=10, columnspan=2)
 

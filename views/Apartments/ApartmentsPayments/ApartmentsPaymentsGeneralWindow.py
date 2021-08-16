@@ -14,7 +14,7 @@ class ApartmentsPaymentsGeneralWindow(BaseView):
 
         self.init_widgets()
 
-    def add_provider_payment(self):
+    def add_apartment_general_payment(self):
         try:
             cur = Connection.CONN.cursor()
             cur.callproc('add_apartment_general_payment',  [DateUtil.date_converter(self.payment_due_date_stringVar.get()),
@@ -87,7 +87,7 @@ class ApartmentsPaymentsGeneralWindow(BaseView):
         apartment_number_entry.grid(row=3, column=0, pady=10, columnspan=2)
 
         # create button to submit input
-        button_submit = Button(input_frame, text="Submit", command=self.add_provider_payment)
+        button_submit = Button(input_frame, text="Submit", command=self.add_apartment_general_payment)
         button_submit.grid(row=4, column=0, pady=15, columnspan=2)
 
         # create label widget to show error
