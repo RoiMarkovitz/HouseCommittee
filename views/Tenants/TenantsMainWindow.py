@@ -58,7 +58,7 @@ class TenantsMainWindow(BaseView):
         topic_label.pack()
 
         # create game-start buttons custom_widgets and attach them to screen
-        button_tenants_details = PrimaryButton(options_frame, "Tenants Details", 'white', 20,
+        button_tenants_details = PrimaryButton(options_frame, "Details", 'white', 20,
                                         self.start_tenants_details_window).get_button()
         button_tenants_details.grid(row=1, pady=10)
         button_elections = PrimaryButton(options_frame, "Elections", "white", 20,

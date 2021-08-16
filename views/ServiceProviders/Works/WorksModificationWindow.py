@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
 import tkinter as tk
 
 from views.BaseView import BaseView
@@ -7,6 +6,8 @@ from constants import Constants
 from Utils.WindowUtil import WindowUtil
 from custom_widgets.PrimaryButton import PrimaryButton
 from custom_widgets.TopicLabel import TopicLabel
+from views.ServiceProviders.Works.WorksAddWindow import WorksAddWindow
+from views.ServiceProviders.Works.WorksUpdateWindow import WorksUpdateWindow
 
 
 class WorksModificationWindow(BaseView):
@@ -17,8 +18,21 @@ class WorksModificationWindow(BaseView):
         self.init_widgets()
 
 
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
+    def start_works_add_window(self):
+        # start root for add to tenants window
+        root = tk.Toplevel()
+        WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Add To Works',
+                                 Constants.ICON_PATH, True, 'lavender')
+        works_add_window = WorksAddWindow(root)
+        root.mainloop()
+
+    def start_works_update_window(self):
+        # start root for update tenants window
+        root = tk.Toplevel()
+        WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Update Works',
+                                 Constants.ICON_PATH, True, 'lavender')
+        works_update_window = WorksUpdateWindow(root)
+        root.mainloop()
 
     def init_widgets(self):
         # frame that will consist the topic in the window
@@ -35,6 +49,15 @@ class WorksModificationWindow(BaseView):
         topic_label = TopicLabel(topic_frame, text="Works Modification", size=50).get_label()
         topic_label.pack()
 
+        # create buttons custom_widgets and attach them to screen
+        button_works_add = PrimaryButton(options_frame, "Add", 'white', 20,
+                                                 self.start_works_add_window).get_button()
+        button_works_add.grid(row=0, pady=10)
+
+        button_works_update = PrimaryButton(options_frame, "Update", "white", 20,
+                                                self.start_works_update_window).get_button()
+        button_works_update.grid(row=1, pady=10)
+
         # create label widget to show error
         self.label_error = Label(options_frame, text="", fg="red", bg='lavender', font=('Ariel', 18))
-        self.label_error.grid(row=4, pady=10)
+        self.label_error.grid(row=3, pady=10)

@@ -1,11 +1,9 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 import tkinter as tk
-
+from connection import Connection
 from views.BaseView import BaseView
-from constants import Constants
-from Utils.WindowUtil import WindowUtil
-from custom_widgets.PrimaryButton import PrimaryButton
+from Utils.ObjectsHandler import ObjectsHandler
 from custom_widgets.TopicLabel import TopicLabel
 
 
@@ -16,9 +14,85 @@ class TenantsDetailsWindow(BaseView):
 
         self.init_widgets()
 
+        self.get_tenants_details()
 
     def clear_text(self, event):
         event.widget.delete(0, "end")
+
+    def get_tenants_details(self):
+        try:
+            obj_type = Connection.CONN.gettype("TENANT_TBL_TYPE")
+            cur = Connection.CONN.cursor()
+            return_obj = cur.callfunc('get_all_tenants', obj_type)
+            self.dict_tenants_details = ObjectsHandler.ObjectRepr(return_obj)
+
+        except Exception as err:
+            print('Exception occurred while executing the func  ', err)
+            self.activate_label_error(err)
+        else:
+            print("get_all_tenants function executed")
+            self.show_all_details()
+        finally:
+            cur.close()
+
+    def show_all_details(self):
+        for index in range(len(self.dict_tenants_details)):
+            records = ['', '', '', '', '', '', '']
+            for i, key in enumerate(self.dict_tenants_details[index]):
+                if key == 'TENANT_ID':
+                    records.insert(0, self.dict_tenants_details[index][key])
+                if key == 'FIRST_NAME':
+                    records.insert(1, self.dict_tenants_details[index][key])
+                if key == 'LAST_NAME':
+                    records.insert(2, self.dict_tenants_details[index][key])
+                if key == 'PHONE_NUMBER':
+                    records.insert(3, self.dict_tenants_details[index][key])
+                if key == 'COMMITTEE_MEMBER':
+                    records.insert(4, self.dict_tenants_details[index][key])
+                if key == 'APARTMENT_NUMBER':
+                    records.insert(5, self.dict_tenants_details[index][key])
+                if key == 'START_DATE':
+                    records.insert(6, self.dict_tenants_details[index][key].strftime('%x'))
+
+            self.records_tree.insert(parent='', index='end', iid=index, text="",
+                                     values=(records[0], records[1], records[2],
+                                             records[3], records[4], records[5],
+                                             records[6]))
+
+        self.records_tree.pack()
+
+    def set_tree_headers(self):
+        """
+        Function defines the headers of the table
+        """
+        header = ['Tenant ID #', 'First Name', 'Last Name', 'Phone #',
+                  'Committee Member', 'Apartment #', 'Start Date']
+        header_style = ttk.Style()
+        header_style.configure("Treeview.Heading", font=(None, 12, 'bold'))
+
+        # define columns
+        self.records_tree["columns"] = (header[0], header[1], header[2], header[3], header[4], header[5],
+                                        header[6])
+        # format columns
+        self.records_tree.column("#0", width=0, stretch=NO)
+        self.records_tree.column(header[0], anchor=CENTER, width=120)
+        self.records_tree.column(header[1], anchor=CENTER, width=120)
+        self.records_tree.column(header[2], anchor=CENTER, width=120)
+        self.records_tree.column(header[3], anchor=CENTER, width=100)
+        self.records_tree.column(header[4], anchor=CENTER, width=160)
+        self.records_tree.column(header[5], anchor=CENTER, width=120)
+        self.records_tree.column(header[6], anchor=CENTER, width=100)
+
+        # create headings
+        self.records_tree.heading("#0", text="", anchor=CENTER)
+        self.records_tree.heading(header[0], text=header[0], anchor=CENTER)
+        self.records_tree.heading(header[1], text=header[1], anchor=CENTER)
+        self.records_tree.heading(header[2], text=header[2], anchor=CENTER)
+        self.records_tree.heading(header[3], text=header[3], anchor=CENTER)
+        self.records_tree.heading(header[4], text=header[4], anchor=CENTER)
+        self.records_tree.heading(header[5], text=header[5], anchor=CENTER)
+        self.records_tree.heading(header[6], text=header[6], anchor=CENTER)
+
 
     def init_widgets(self):
         # frame that will consist the topic in the window
@@ -26,15 +100,31 @@ class TenantsDetailsWindow(BaseView):
         topic_frame.configure(bg='lavender')
         topic_frame.pack(pady=20)
 
-        # frame that will consist the game options in the window
-        options_frame = Frame(self.master)
-        options_frame.configure(bg='lavender')
-        options_frame.place(relx=0.5, rely=0.5, anchor=CENTER)
+        # frame that will consist the table of the records
+        tree_frame = Frame(self.master)
+        tree_frame.configure(bg='lavender')
+        tree_frame.pack(pady=40)
+
+        # frame that will consist of errors in the window
+        errors_frame = Frame(self.master)
+        errors_frame.configure(bg='lavender')
+        errors_frame.place(relx=0.5, rely=0.9, anchor=CENTER)
 
         # create label widget for topic of the window
         topic_label = TopicLabel(topic_frame, text="Tenants Details", size=50).get_label()
         topic_label.pack()
 
+        # create scroll bar widget and attach it to the tree table frame
+        scroll_tree = Scrollbar(tree_frame)
+        scroll_tree.pack(side=RIGHT, fill=Y)
+        # tree view widget and bind the scroll bar to it
+        self.records_tree = ttk.Treeview(tree_frame, yscrollcommand=scroll_tree.set, selectmode="none")
+        scroll_tree.config(command=self.records_tree.yview)
+
+        self.set_tree_headers()
+
         # create label widget to show error
-        self.label_error = Label(options_frame, text="", fg="red", bg='lavender', font=('Ariel', 18))
-        self.label_error.grid(row=4, pady=10)
+        self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
+        self.label_error.pack()
+
+

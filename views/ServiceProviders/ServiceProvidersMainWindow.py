@@ -68,13 +68,13 @@ class ServiceProvidersMainWindow(BaseView):
 
 
         # create game-start buttons custom_widgets and attach them to screen
-        button_service_provider_details = PrimaryButton(options_frame, "Service Providers Details", 'white', 25,
+        button_service_provider_details = PrimaryButton(options_frame, "Details", 'white', 25,
                                         self.start_service_providers_details_main_window).get_button()
-        button_service_provider_details.grid(row=1, pady=10)
+        button_service_provider_details.grid(row=0, pady=10)
         button_works = PrimaryButton(options_frame, "Works", "white", 25,
                                             self.start_works_main_window).get_button()
-        button_works.grid(row=2, pady=10)
-        button_service_providers_main_payments = PrimaryButton(options_frame, "Service Providers Payments", "white", 25,
+        button_works.grid(row=1, pady=10)
+        button_service_providers_main_payments = PrimaryButton(options_frame, "Payments", "white", 25,
                                       self.start_service_providers_main_payments_window).get_button()
         button_service_providers_main_payments.grid(row=3, pady=10)
 

@@ -1,10 +1,7 @@
 from tkinter import *
 import tkinter as tk
 
-from views.Apartments.ApartmentsPayments.ApartmentsPaymentsDetailsWindow import ApartmentsPaymentsDetailsWindow
-from views.Apartments.ApartmentsPayments.ApartmentsPaymentsModificationWindow import \
-    ApartmentsPaymentsModificationWindow
-from views.Apartments.ApartmentsPayments.ApartmentsPaymentsReceiptWindow import ApartmentsPaymentsReceiptWindow
+
 from views.BaseView import BaseView
 from constants import Constants
 from Utils.WindowUtil import WindowUtil
@@ -61,7 +58,7 @@ class TenantsDetailsMainWindow(BaseView):
         button_tenants_details = PrimaryButton(options_frame, "Present Details", 'white', 20,
                                         self.start_tenants_details_window).get_button()
         button_tenants_details.grid(row=1, pady=10)
-        button_tennats_modification = PrimaryButton(options_frame, "Modify Tenants", "white", 20,
+        button_tennats_modification = PrimaryButton(options_frame, "Modify", "white", 20,
                                             self.start_tenants_modification_window).get_button()
         button_tennats_modification.grid(row=2, pady=10)
 

@@ -32,6 +32,7 @@ class ApartmentsPaymentsReceiptWindow(BaseView):
             print('Exception occurred while executing the func  ', err)
             self.activate_label_error(err)
         else:
+            print("get_receipt_details function executed")
             self.label_payment_number_value['text'] = str(self.dict_receipt.get('PAYMENT_NUMBER'))
             self.label_payment_due_date_value['text'] = self.dict_receipt.get('PAYMENT_DUE_DATE').strftime('%x')
             self.label_payment_reason_value['text'] = self.dict_receipt.get('REASON')
@@ -66,7 +67,7 @@ class ApartmentsPaymentsReceiptWindow(BaseView):
         errors_frame.place(relx=0.5, rely=0.9, anchor=CENTER)
 
         # create label widget for topic of the window
-        topic_label = TopicLabel(topic_frame, text="Apartments Payments Receipt", size=30).get_label()
+        topic_label = TopicLabel(topic_frame, text="Apartments Payments Receipt", size=40).get_label()
         topic_label.pack()
 
         # define stringVar for nickname input

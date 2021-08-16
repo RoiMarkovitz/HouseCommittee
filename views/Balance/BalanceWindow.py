@@ -20,16 +20,13 @@ class BalanceWindow(BaseView):
         except Exception as err:
             print('Exception occurred while executing the func  ', err)
         else:
-            print("Function Executed")
+            print("calculate_balance function executed")
 
         finally:
             cur.close()
 
         self.init_widgets()
 
-
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
 
     def init_widgets(self):
         # frame that will consist the topic in the window

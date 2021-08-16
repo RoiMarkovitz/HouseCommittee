@@ -60,7 +60,7 @@ class WorksMainWindow(BaseView):
         button_works_details = PrimaryButton(options_frame, "Present Details", 'white', 20,
                                         self.start_works_details_window).get_button()
         button_works_details.grid(row=1, pady=10)
-        button_modify_works = PrimaryButton(options_frame, "Modify Works", "white", 20,
+        button_modify_works = PrimaryButton(options_frame, "Modify", "white", 20,
                                             self.start_works_modification_window).get_button()
         button_modify_works.grid(row=2, pady=10)
 

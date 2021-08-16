@@ -62,7 +62,7 @@ class ServiceProvidersDetailsMainWindow(BaseView):
                                         self.start_service_providers_details_window).get_button()
         button_service_provider_details.grid(row=1, pady=10)
 
-        button_service_providers_payments_modification = PrimaryButton(options_frame, "Modify Service Providers", "white", 20,
+        button_service_providers_payments_modification = PrimaryButton(options_frame, "Modify", "white", 20,
                                       self.start_service_providers_modification_window).get_button()
         button_service_providers_payments_modification.grid(row=2, pady=10)
 

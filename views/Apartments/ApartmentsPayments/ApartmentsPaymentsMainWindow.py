@@ -69,7 +69,7 @@ class ApartmentsPaymentsMainWindow(BaseView):
         button_apartments_payments_details = PrimaryButton(options_frame, "Present Details", "white", 20,
                                             self.start_apartments_payments_details_window).get_button()
         button_apartments_payments_details.grid(row=1, pady=10)
-        button_apartments_payments_modification = PrimaryButton(options_frame, "Modify Payments", 'white', 20,
+        button_apartments_payments_modification = PrimaryButton(options_frame, "Modify", 'white', 20,
                                         self.start_apartments_payments_modification_window).get_button()
         button_apartments_payments_modification.grid(row=2, pady=10)
         button_apartments_payments_receipt = PrimaryButton(options_frame, "Produce Receipt", "white", 20,

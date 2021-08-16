@@ -7,12 +7,13 @@ from constants import Constants
 from Utils.WindowUtil import WindowUtil
 from custom_widgets.PrimaryButton import PrimaryButton
 from custom_widgets.TopicLabel import TopicLabel
+from views.ServiceProviders.ServiceProvidersPayments.ServiceProvidersPaymentsAddWindow import \
+    ServiceProvidersPaymentsAddWindow
 
 from views.ServiceProviders.ServiceProvidersPayments.ServiceProvidersPaymentsDetailsWindow import \
     ServiceProvidersPaymentsDetailsWindow
 from views.ServiceProviders.ServiceProvidersPayments.ServiceProvidersPaymentsModificationWindow import \
-    ServiceProvidersPaymentsModificationWindow
-
+    ServiceProvidersModificationWindow
 
 
 class ServiceProvidersMainPaymentsWindow(BaseView):
@@ -27,7 +28,6 @@ class ServiceProvidersMainPaymentsWindow(BaseView):
         root = tk.Toplevel()
         WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Service Providers Payments Details',
                                  Constants.ICON_PATH, True, 'lavender')
-        #    root.protocol("WM_DELETE_WINDOW", lambda: self.on_closing(root, 1))
         service_providers_payments_details_window = ServiceProvidersPaymentsDetailsWindow(root)
         root.mainloop()
 
@@ -36,8 +36,7 @@ class ServiceProvidersMainPaymentsWindow(BaseView):
         root = tk.Toplevel()
         WindowUtil.config_window(root, Constants.WINDOW_SIZE, False, 'Service Providers Payments Modification',
                                  Constants.ICON_PATH, True, 'lavender')
-        #    root.protocol("WM_DELETE_WINDOW", lambda: self.on_closing(root, 1))
-        service_providers_payments_modification_window = ServiceProvidersPaymentsModificationWindow(root)
+        service_providers_payments_modification_window = ServiceProvidersModificationWindow(root)
         root.mainloop()
 
     def clear_text(self, event):
@@ -58,13 +57,12 @@ class ServiceProvidersMainPaymentsWindow(BaseView):
         topic_label = TopicLabel(topic_frame, text="Service Providers Payments", size=40).get_label()
         topic_label.pack()
 
-
         # create game-start buttons custom_widgets and attach them to screen
         button_service_provider_payments_details = PrimaryButton(options_frame, "Present Details", 'white', 25,
                                         self.start_service_providers_payments_details_window).get_button()
         button_service_provider_payments_details.grid(row=1, pady=10)
 
-        button_service_providers_payments_modification = PrimaryButton(options_frame, "Modify Providers Payments", "white", 25,
+        button_service_providers_payments_modification = PrimaryButton(options_frame, "Modify", "white", 25,
                                       self.start_service_providers_modification_window).get_button()
         button_service_providers_payments_modification.grid(row=2, pady=10)
 

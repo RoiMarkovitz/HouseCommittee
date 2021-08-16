@@ -576,7 +576,7 @@ BEGIN
     
 EXCEPTION
     WHEN DUP_VAL_ON_INDEX THEN
-    raise_application_error (-20004,'Work number already exists.');     
+    raise_application_error (-20004,'Work already paid.');     
 
 END;
 
@@ -626,8 +626,6 @@ BEGIN
         RAISE invalid_amount;
     END IF;
     
-    
-
     UPDATE service_payments
     SET paid_date = in_paid_date, amount = in_amount, business_number = in_business_number,
     work_number = in_work_number

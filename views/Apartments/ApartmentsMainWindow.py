@@ -64,13 +64,13 @@ class ApartmentsMainWindow(BaseView):
         topic_label.pack()
 
         # create game-start buttons custom_widgets and attach them to screen
-        button_apartments_details = PrimaryButton(options_frame, "Apartments Details", 'white', 20,
+        button_apartments_details = PrimaryButton(options_frame, "Details", 'white', 20,
                                         self.start_apartments_details_window).get_button()
         button_apartments_details.grid(row=1, pady=10)
-        button_apartments_history = PrimaryButton(options_frame, "Apartments History", "white", 20,
+        button_apartments_history = PrimaryButton(options_frame, "History", "white", 20,
                                             self.start_apartments_history_window).get_button()
         button_apartments_history.grid(row=2, pady=10)
-        button_apartments_payments = PrimaryButton(options_frame, "Apartments Payments", "white", 20,
+        button_apartments_payments = PrimaryButton(options_frame, "Payments", "white", 20,
                                       self.start_apartments_payments_main_window).get_button()
         button_apartments_payments.grid(row=3, pady=10)
 

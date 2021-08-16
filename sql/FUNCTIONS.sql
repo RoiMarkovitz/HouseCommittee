@@ -26,7 +26,7 @@ BEGIN
 END;
 
 --select calculate_balance() from dual;
---select * from table(calculate_balance());
+select * from table(calculate_balance());
 
 -- ##### APARTMENT_PAYMENTS ##### --
 
@@ -98,12 +98,13 @@ BEGIN
          raise_application_error(-20005, 'payment was not found.');
     END;
 
-    SELECT payment_method, paid_date
-    INTO var_payment_method, var_paid_date
+    SELECT payment_method, paid_date, first_name, last_name
+    INTO var_payment_method, var_paid_date, var_first_name, var_last_name
     FROM apartment_payments 
     WHERE payment_number = in_payment_number;
     
-    IF (var_paid_date IS NULL OR var_payment_method IS NULL) THEN
+    IF (var_paid_date IS NULL OR var_payment_method IS NULL
+    OR var_first_name IS NULL OR var_last_name IS NULL) THEN
         RAISE not_paid;
     ELSE    
         apart_payment_details.extend();
@@ -127,7 +128,7 @@ EXCEPTION
         cannot retrieve details.');
 END;
 
---SELECT get_receipt_details(1) from dual;
+SELECT get_receipt_details(10) from dual;
 --select * from table(get_receipt_details(1));
 --select * from apartment_payments;
 
@@ -359,7 +360,7 @@ BEGIN
 END;
 
 --select get_all_apartment() from dual;
---select * from table(get_all_apartment());
+select * from table(get_all_apartment());
 
 
 -- ##### TENANT + TENANT_APARTMENT ##### -- 
