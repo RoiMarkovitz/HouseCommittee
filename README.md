@@ -38,6 +38,10 @@ Apartments Payments Details
 :-------------------------:
 <img src="https://github.com/roi-c/HouseCommittee/blob/main/images/ApartmentPaymentsDetails.png" alt="drawing" width="800"/> 
 
+Add To Works     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/AddWork.png" alt="drawing" width="800"/> 
+
 Tenants Details     
 :-------------------------:
 <img src="https://github.com/roi-c/HouseCommittee/blob/main/images/Tenants.jpg" alt="drawing" width="800"/>  
