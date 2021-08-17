@@ -19,12 +19,12 @@ The exchange of data is made through the activation of function and procedure ob
 - Database deisgn with 10 tables including One to One, One to Many and Many to Many relations.
 - 42 GUI screens.
  
-
-### Example of some of the GUI screens
-
 Database Diagram         
 :-------------------------:
 <img src="https://github.com/roi-c/HouseCommittee/blob/main/database%20diagram/HouseCommittee.png" alt="drawing" width="800"/>  
+
+
+### Example of some of the GUI screens
 
 Main Menu         
 :-------------------------:
