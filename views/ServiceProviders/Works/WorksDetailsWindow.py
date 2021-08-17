@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox, ttk
-import tkinter as tk
 from connection import Connection
 from views.BaseView import BaseView
 from Utils.ObjectsHandler import ObjectsHandler
@@ -15,9 +14,6 @@ class WorksDetailsWindow(BaseView):
         self.init_widgets()
 
         self.get_works_details()
-
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
 
     def get_works_details(self):
         try:
@@ -114,5 +110,3 @@ class WorksDetailsWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-

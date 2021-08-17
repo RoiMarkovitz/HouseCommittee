@@ -19,9 +19,5 @@ root.protocol("WM_DELETE_WINDOW", lambda: Connection.on_closing(root))
 main_window = MainWindow(root)
 root.mainloop()  # infinite loop to display custom_widgets
 
-# data = ['18-JUL-2010', 111234561]
-#finally:
-# conn.commit()
-#cur.close()
 
 

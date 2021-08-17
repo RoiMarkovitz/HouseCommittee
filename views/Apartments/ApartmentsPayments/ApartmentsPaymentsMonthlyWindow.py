@@ -3,7 +3,6 @@ from Utils.DateUtil import DateUtil
 from connection import Connection
 from views.BaseView import BaseView
 
-
 from custom_widgets.TopicLabel import TopicLabel
 
 
@@ -17,9 +16,9 @@ class ApartmentsPaymentsMonthlyWindow(BaseView):
     def add_apartment_monthly_payment(self):
         try:
             cur = Connection.CONN.cursor()
-            cur.callproc('add_apartment_monthly_payment',  [DateUtil.date_converter(self.payment_due_date_stringVar.get()),
-                                                  int(self.apartment_number_stringVar.get())])
-
+            cur.callproc('add_apartment_monthly_payment',
+                         [DateUtil.date_converter(self.payment_due_date_stringVar.get()),
+                          int(self.apartment_number_stringVar.get())])
 
         except Exception as err:
             print('Exception occurred while executing the procedure  ', err)
@@ -57,7 +56,7 @@ class ApartmentsPaymentsMonthlyWindow(BaseView):
         self.payment_due_date_stringVar = StringVar(input_frame, value="Type pay due date DD-MM-YYYY")
         # create entry widget for payment_due_date, attach it to screen and bind mouse left click to it
         payment_due_date_entry = Entry(input_frame, textvariable=self.payment_due_date_stringVar,
-                                width=30, font=('Ariel', 16))
+                                       width=30, font=('Ariel', 16))
         payment_due_date_entry.bind("<Button-1>", self.clear_text)
         payment_due_date_entry.grid(row=0, column=0, pady=10, columnspan=2)
 
@@ -65,7 +64,7 @@ class ApartmentsPaymentsMonthlyWindow(BaseView):
         self.apartment_number_stringVar = StringVar(input_frame, value="Type Apartment Number (9 digits)")
         # create entry widget for apartment_number, attach it to screen and bind mouse left click to it
         apartment_number_entry = Entry(input_frame, textvariable=self.apartment_number_stringVar,
-                                width=30, font=('Ariel', 16))
+                                       width=30, font=('Ariel', 16))
         apartment_number_entry.bind("<Button-1>", self.clear_text)
         apartment_number_entry.grid(row=1, column=0, pady=10, columnspan=2)
 
@@ -76,8 +75,3 @@ class ApartmentsPaymentsMonthlyWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-
-
-
-

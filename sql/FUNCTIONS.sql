@@ -26,7 +26,8 @@ BEGIN
 END;
 
 --select calculate_balance() from dual;
-select * from table(calculate_balance());
+--select * from table(calculate_balance());
+
 
 -- ##### APARTMENT_PAYMENTS ##### --
 
@@ -128,9 +129,10 @@ EXCEPTION
         cannot retrieve details.');
 END;
 
-SELECT get_receipt_details(10) from dual;
+--SELECT get_receipt_details(10) from dual;
 --select * from table(get_receipt_details(1));
 --select * from apartment_payments;
+
 
 create or replace FUNCTION get_all_apartment_payments
 RETURN apart_payments_tbl_type
@@ -159,7 +161,6 @@ END;
 --select get_all_apartment_payments() from dual;
 --select * from table(get_all_apartment_payments());
 --select * from apartment_payments;
-
 
 create or replace FUNCTION get_apartments_owes_by_apartment_range
 (
@@ -257,8 +258,9 @@ END;
 --select * from table(get_apartments_owes_by_date_range
 --(TO_DATE('20/07/2015', 'DD/MM/YYYY'), TO_DATE('10/01/2015', 'DD/MM/YYYY') ));
 
--- ##### APARTMENT_HISTORY ##### --
 
+
+-- ##### APARTMENT_HISTORY ##### --
 
 create or replace TYPE apart_hist_obj_type AS OBJECT
     (
@@ -360,7 +362,7 @@ BEGIN
 END;
 
 --select get_all_apartment() from dual;
-select * from table(get_all_apartment());
+--select * from table(get_all_apartment());
 
 
 -- ##### TENANT + TENANT_APARTMENT ##### -- 
@@ -566,7 +568,7 @@ BEGIN
 END;
 
 --select get_all_providers() from dual;
-select * from table(get_all_providers());
+--select * from table(get_all_providers());
 
 -- ##### ELECTIONS  ##### --
 

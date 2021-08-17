@@ -38,7 +38,7 @@ class TenantsElectionsRemoveWindow(BaseView):
         topic_frame.configure(bg='lavender')
         topic_frame.pack(pady=5)
 
-        # frame that will consist of elections input
+        # frame that will consist of input
         input_frame = Frame(self.master)
         input_frame.configure(bg='lavender')
         input_frame.pack(pady=5)
@@ -56,7 +56,7 @@ class TenantsElectionsRemoveWindow(BaseView):
         self.election_date_stringVar = StringVar(input_frame, value="Type election date DD-MM-YYYY")
         # create entry widget for election_date, attach it to screen and bind mouse left click to it
         election_date_entry = Entry(input_frame, textvariable=self.election_date_stringVar,
-                               width=30, font=('Ariel', 16))
+                                    width=30, font=('Ariel', 16))
         election_date_entry.bind("<Button-1>", self.clear_text)
         election_date_entry.grid(row=0, column=0, pady=10)
 
@@ -64,7 +64,7 @@ class TenantsElectionsRemoveWindow(BaseView):
         self.tenant_id_stringVar = StringVar(input_frame, value="Type tenant id (9 digits)")
         # create entry widget for tenant_id, attach it to screen and bind mouse left click to it
         tenant_id_entry = Entry(input_frame, textvariable=self.tenant_id_stringVar,
-                                    width=30, font=('Ariel', 16))
+                                width=30, font=('Ariel', 16))
         tenant_id_entry.bind("<Button-1>", self.clear_text)
         tenant_id_entry.grid(row=1, column=0, pady=10)
 
@@ -75,8 +75,3 @@ class TenantsElectionsRemoveWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-
-
-
-

@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox, ttk
-import tkinter as tk
 from connection import Connection
 from views.BaseView import BaseView
 from Utils.ObjectsHandler import ObjectsHandler
@@ -35,7 +34,8 @@ class ApartmentsPaymentsDetailsWindow(BaseView):
                                            DateUtil.date_converter(self.end_date_stringVar.get())])
             elif show_by == ApartmentsPaymentsDetailsWindow.SHOW_BY_APARTMENT_NUMBER:
                 return_obj = cur.callfunc('get_apartments_owes_by_apartment_range', obj_type,
-                                          [int(self.min_apart_num_stringVar.get()), int(self.max_apart_num_stringVar.get())])
+                                          [int(self.min_apart_num_stringVar.get()),
+                                           int(self.max_apart_num_stringVar.get())])
 
             self.dict_apartments_payments = ObjectsHandler.ObjectRepr(return_obj)
 
@@ -154,18 +154,19 @@ class ApartmentsPaymentsDetailsWindow(BaseView):
         topic_label.pack()
 
         # create search button widget and attach it to screen
-        button_all = Button(search_frame, text="Show all", fg="white", bg="navy", font=('Ariel', 16),
+        button_all = Button(search_frame, text="Show All", fg="white", bg="navy", font=('Ariel', 16),
                             command=lambda: self.get_apartments_payments_details
                             (ApartmentsPaymentsDetailsWindow.SHOW_ALL))
 
         button_all.grid(row=0, column=0, pady=5, columnspan=3)
 
-        button_date_range = Button(search_frame, text="Show by date range", fg="white", bg="navy", font=('Ariel', 14),
+        button_date_range = Button(search_frame, text="Show Debts By Date Range", fg="white", bg="navy",
+                                   font=('Ariel', 14),
                                    command=lambda: self.get_apartments_payments_details
                                    (ApartmentsPaymentsDetailsWindow.SHOW_BY_DATE_RANGE))
         button_date_range.grid(row=1, column=2, pady=5, padx=10, sticky=W)
 
-        button_apart_num_range = Button(search_frame, text="Show by apartment number range", fg="white", bg="navy",
+        button_apart_num_range = Button(search_frame, text="Show Debts By Apartment # Range", fg="white", bg="navy",
                                         font=('Ariel', 14),
                                         command=lambda: self.get_apartments_payments_details
                                         (ApartmentsPaymentsDetailsWindow.SHOW_BY_APARTMENT_NUMBER))

@@ -15,14 +15,14 @@ class BaseView(object):
         """
         Function used to show error text in a label.
         The text of the label is changed.
-        Then, the after method waits 3000 milliseconds to start the clear_error_label function
+        Then, the after method waits 5000 milliseconds to start the clear_error_label function
 
         Parameters:
         text (string): the root window object.
         self.label_error (Label): the label object
         """
         self.label_error['text'] = text
-        self.master.after(4000, self.clear_error_label)
+        self.master.after(5000, self.clear_error_label)
 
     def clear_error_label(self):
         """

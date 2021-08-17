@@ -15,16 +15,12 @@ class ApartmentsDetailsWindow(BaseView):
 
         self.get_apartments_details()
 
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
-
     def get_apartments_details(self):
         try:
             obj_type = Connection.CONN.gettype("APARTMENTS_TBL_TYPE")
             cur = Connection.CONN.cursor()
             return_obj = cur.callfunc('get_all_apartment', obj_type)
             self.dict_apartments_details = ObjectsHandler.ObjectRepr(return_obj)
-
         except Exception as err:
             print('Exception occurred while executing the func  ', err)
             self.activate_label_error(err)
@@ -92,7 +88,6 @@ class ApartmentsDetailsWindow(BaseView):
         self.records_tree.heading(header[5], text=header[5], anchor=CENTER)
         self.records_tree.heading(header[6], text=header[6], anchor=CENTER)
 
-
     def init_widgets(self):
         # frame that will consist the topic in the window
         topic_frame = Frame(self.master)
@@ -125,5 +120,3 @@ class ApartmentsDetailsWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-

@@ -2885,8 +2885,7 @@
 									},
 									"name": "business_number",
 									"type": "NUMBER",
-									"length": "9, 0",
-									"foreignKey": true
+									"length": "9, 0"
 								},
 								{
 									"_type": "ERDColumn",

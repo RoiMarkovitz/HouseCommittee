@@ -80,7 +80,7 @@ CREATE TABLE works
 work_number NUMBER(38,0) PRIMARY KEY,
 work_type VARCHAR2(30) NOT NULL,
 price NUMBER(9,2) NOT NULL CHECK (price > 0),
-business_number NUMBER(9,0) REFERENCES service_provider(business_number) ON DELETE CASCADE,
+business_number NUMBER(9,0),
 tenant_id NUMBER(9,0)  
 );
 

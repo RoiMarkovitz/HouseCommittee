@@ -1,5 +1,4 @@
 import cx_Oracle
-import time
 
 
 class Connection(object):
@@ -16,8 +15,6 @@ class Connection(object):
 
     @staticmethod
     def on_closing(root):
-       # time.sleep(5)
         if Connection.CONN is not None:
-          #  print('closing')
             Connection.CONN.close()
         root.destroy()

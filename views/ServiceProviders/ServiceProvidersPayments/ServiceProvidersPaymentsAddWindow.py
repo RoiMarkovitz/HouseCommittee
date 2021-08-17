@@ -3,7 +3,6 @@ from Utils.DateUtil import DateUtil
 from connection import Connection
 from views.BaseView import BaseView
 
-
 from custom_widgets.TopicLabel import TopicLabel
 
 
@@ -17,9 +16,8 @@ class ServiceProvidersPaymentsAddWindow(BaseView):
     def add_provider_payment(self):
         try:
             cur = Connection.CONN.cursor()
-            cur.callproc('add_service_payment',  [DateUtil.date_converter(self.paid_date_stringVar.get()),
-                                                  int(self.work_number_stringVar.get())])
-
+            cur.callproc('add_service_payment', [DateUtil.date_converter(self.paid_date_stringVar.get()),
+                                                 int(self.work_number_stringVar.get())])
 
         except Exception as err:
             print('Exception occurred while executing the procedure  ', err)
@@ -39,7 +37,7 @@ class ServiceProvidersPaymentsAddWindow(BaseView):
         topic_frame.configure(bg='lavender')
         topic_frame.pack(pady=20)
 
-        # frame that will consist of elections input
+        # frame that will consist of input
         input_frame = Frame(self.master)
         input_frame.configure(bg='lavender')
         input_frame.pack(pady=10)
@@ -65,19 +63,14 @@ class ServiceProvidersPaymentsAddWindow(BaseView):
         self.work_number_stringVar = StringVar(input_frame, value="Type Work Number")
         # create entry widget for work_number, attach it to screen and bind mouse left click to it
         work_number_entry = Entry(input_frame, textvariable=self.work_number_stringVar,
-                                width=30, font=('Ariel', 16))
+                                  width=30, font=('Ariel', 16))
         work_number_entry.bind("<Button-1>", self.clear_text)
         work_number_entry.grid(row=1, column=0, pady=10, columnspan=2)
 
         # create button to submit input
         button_submit = Button(input_frame, text="Submit", command=self.add_provider_payment)
-        button_submit.grid(row=4, column=0, pady=15, columnspan=2)
+        button_submit.grid(row=2, column=0, pady=15, columnspan=2)
 
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-
-
-
-

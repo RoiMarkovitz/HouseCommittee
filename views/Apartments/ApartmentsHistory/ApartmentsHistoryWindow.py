@@ -16,16 +16,12 @@ class ApartmentsHistoryWindow(BaseView):
 
         self.get_apartments_history_details()
 
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
-
     def get_apartments_history_details(self):
         try:
             obj_type = Connection.CONN.gettype("APART_HIST_TBL_TYPE")
             cur = Connection.CONN.cursor()
             return_obj = cur.callfunc('get_all_apartment_history', obj_type)
             self.dict_apartments_history = ObjectsHandler.ObjectRepr(return_obj)
-
         except Exception as err:
             print('Exception occurred while executing the func  ', err)
             self.activate_label_error(err)
@@ -125,5 +121,3 @@ class ApartmentsHistoryWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-

@@ -1,8 +1,6 @@
 from tkinter import *
-from Utils.DateUtil import DateUtil
 from connection import Connection
 from views.BaseView import BaseView
-
 
 from custom_widgets.TopicLabel import TopicLabel
 
@@ -17,10 +15,10 @@ class TenantsUpdateWindow(BaseView):
     def add_to_tenants(self):
         try:
             cur = Connection.CONN.cursor()
-            cur.callproc('update_tenant',  [int(self.tenant_id_stringVar.get()), self.tenant_first_name_stringVar.get(),
-                                         self.tenant_last_name_stringVar.get(), self.tenant_phone_number_stringVar.get(),
-                                         int(self.committee_member.get())])
-
+            cur.callproc('update_tenant', [int(self.tenant_id_stringVar.get()), self.tenant_first_name_stringVar.get(),
+                                           self.tenant_last_name_stringVar.get(),
+                                           self.tenant_phone_number_stringVar.get(),
+                                           int(self.committee_member.get())])
         except Exception as err:
             print('Exception occurred while executing the procedure  ', err)
             self.activate_label_error(err)
@@ -39,7 +37,7 @@ class TenantsUpdateWindow(BaseView):
         topic_frame.configure(bg='lavender')
         topic_frame.pack(pady=20)
 
-        # frame that will consist of elections input
+        # frame that will consist of input
         input_frame = Frame(self.master)
         input_frame.configure(bg='lavender')
         input_frame.pack(pady=10)
@@ -65,7 +63,7 @@ class TenantsUpdateWindow(BaseView):
         self.tenant_first_name_stringVar = StringVar(input_frame, value="Type First Name")
         # create entry widget for tenant_first_name, attach it to screen and bind mouse left click to it
         tenant_first_name_entry = Entry(input_frame, textvariable=self.tenant_first_name_stringVar,
-                                width=30, font=('Ariel', 16))
+                                        width=30, font=('Ariel', 16))
         tenant_first_name_entry.bind("<Button-1>", self.clear_text)
         tenant_first_name_entry.grid(row=1, column=0, pady=10, columnspan=2)
 
@@ -73,7 +71,7 @@ class TenantsUpdateWindow(BaseView):
         self.tenant_last_name_stringVar = StringVar(input_frame, value="Type Last Name")
         # create entry widget for tenant_last_name, attach it to screen and bind mouse left click to it
         tenant_last_name_entry = Entry(input_frame, textvariable=self.tenant_last_name_stringVar,
-                                        width=30, font=('Ariel', 16))
+                                       width=30, font=('Ariel', 16))
         tenant_last_name_entry.bind("<Button-1>", self.clear_text)
         tenant_last_name_entry.grid(row=2, column=0, pady=10, columnspan=2)
 
@@ -81,7 +79,7 @@ class TenantsUpdateWindow(BaseView):
         self.tenant_phone_number_stringVar = StringVar(input_frame, value="Type Phone Number")
         # create entry widget for tenant_phone_number, attach it to screen and bind mouse left click to it
         tenant_phone_number_entry = Entry(input_frame, textvariable=self.tenant_phone_number_stringVar,
-                                           width=30, font=('Ariel', 16))
+                                          width=30, font=('Ariel', 16))
         tenant_phone_number_entry.bind("<Button-1>", self.clear_text)
         tenant_phone_number_entry.grid(row=3, column=0, pady=10, columnspan=2)
 
@@ -101,8 +99,3 @@ class TenantsUpdateWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-
-
-
-

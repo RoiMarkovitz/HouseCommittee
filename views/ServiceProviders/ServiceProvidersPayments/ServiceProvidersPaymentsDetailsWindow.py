@@ -16,9 +16,6 @@ class ServiceProvidersPaymentsDetailsWindow(BaseView):
 
         self.get_service_providers_payments_details(True)
 
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
-
     def get_service_providers_payments_details(self, ascending):
         try:
             obj_type = Connection.CONN.gettype("SERVICE_PAYMENTS_TBL_TYPE")
@@ -144,5 +141,3 @@ class ServiceProvidersPaymentsDetailsWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-

@@ -1,5 +1,6 @@
 import os
 
+
 class Constants(object):
 
     WINDOW_WIDTH = 1000

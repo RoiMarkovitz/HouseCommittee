@@ -89,14 +89,16 @@ EXECUTE add_apartment_monthly_payment('15/APR/2015', 2);
 EXECUTE add_apartment_monthly_payment('15/MAY/2015', 2);
 EXECUTE add_apartment_monthly_payment('15/JUN/2015', 2);
 EXECUTE add_apartment_monthly_payment('15/JUL/2015', 2);
-EXECUTE add_apartment_monthly_payment('15/AUG/2015', 2);
-EXECUTE add_apartment_monthly_payment('15/SEP/2015', 2);
-EXECUTE add_apartment_monthly_payment('20/OCT/2015', 2); 
+EXECUTE add_apartment_monthly_payment('15/AUG/2015', 3);
+EXECUTE add_apartment_monthly_payment('15/SEP/2015', 4);
+EXECUTE add_apartment_monthly_payment('20/OCT/2015', 4); 
 EXECUTE add_apartment_monthly_payment('15/AUG/2015', 5);
 EXECUTE add_apartment_monthly_payment('15/APR/2015', 1);
 EXECUTE add_apartment_monthly_payment('20/OCT/2015', 7);
 EXECUTE add_apartment_general_payment('20/OCT/2015', 'Damage', 2500, 2);
 EXECUTE add_apartment_general_payment('14/OCT/2015', 'Damage', 1700, 4);
+EXECUTE add_apartment_general_payment('14/OCT/2015', 'Damage', 1700, 4);
+EXECUTE add_apartment_general_payment('14/MAR/2015', 'Damage', 2700, 4);
 
 
 EXECUTE add_service_provider(517555777, 'TopClean', '1297 Ben Gurion, Tel Aviv', '353.123.5555');
@@ -121,6 +123,8 @@ EXECUTE add_work('Pump', 410, 552556391, 111111111);
 EXECUTE add_work('Pesticide', 270, 777773391, 111111111);
 EXECUTE add_work('Gardening', 310, 532933391, 111111111);
 EXECUTE add_work('Painting', 150, 992546891, 111111111);
+EXECUTE add_work('Gardening', 415, 532933391, 444444444);
+EXECUTE add_work('Painting', 185, 992546891, 444444444);
 
 
 EXECUTE add_service_payment('18/JUL/2015', 2);

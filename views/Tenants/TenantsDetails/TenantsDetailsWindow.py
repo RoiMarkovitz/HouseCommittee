@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox, ttk
-import tkinter as tk
 from connection import Connection
 from views.BaseView import BaseView
 from Utils.ObjectsHandler import ObjectsHandler
@@ -15,9 +14,6 @@ class TenantsDetailsWindow(BaseView):
         self.init_widgets()
 
         self.get_tenants_details()
-
-    def clear_text(self, event):
-        event.widget.delete(0, "end")
 
     def get_tenants_details(self):
         try:
@@ -93,7 +89,6 @@ class TenantsDetailsWindow(BaseView):
         self.records_tree.heading(header[5], text=header[5], anchor=CENTER)
         self.records_tree.heading(header[6], text=header[6], anchor=CENTER)
 
-
     def init_widgets(self):
         # frame that will consist the topic in the window
         topic_frame = Frame(self.master)
@@ -126,5 +121,3 @@ class TenantsDetailsWindow(BaseView):
         # create label widget to show error
         self.label_error = Label(errors_frame, text="", fg="red", bg='lavender', font=('Ariel', 14))
         self.label_error.pack()
-
-
