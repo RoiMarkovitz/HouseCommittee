@@ -1,5 +1,5 @@
 # HouseCommittee
-With this system the house committee can manage payments, maintenance works, service providers, apartments and tenants.
+With this system the house committee can manage payments, maintenance works, elections, service providers, apartments and tenants.
 
 The system was created as my idea for a project in oracle course at the academy.
 
@@ -20,11 +20,39 @@ The exchange of data is made through the activation of function and procedure ob
 - 42 GUI screens.
  
 
-### Images
+### Example of some of the GUI screens
 
 Database Diagram         
 :-------------------------:
-<img src="https://github.com/roi-c/HouseCommittee/blob/main/database%20diagram/HouseCommittee.png" alt="drawing" width="350"/>  
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/database%20diagram/HouseCommittee.png" alt="drawing" width="800"/>  
+
+Main Menu         
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/MainMenu.jpg" alt="drawing" width="800"/>  
+
+Apartments Details     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/ApartmentsDetails.png" alt="drawing" width="800"/>  
+
+Apartments Payments Details     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/ApartmentPaymentsDetails.png" alt="drawing" width="800"/> 
+
+Tenants Details     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/Tenants.jpg" alt="drawing" width="800"/>  
+
+Service Providers Payments Details     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/ProvidersPayments.jpg" alt="drawing" width="800"/>  
+
+Receipt Details     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/Receipt.jpg" alt="drawing" width="800"/>  
+
+Add To Elections     
+:-------------------------:
+<img src="https://github.com/roi-c/HouseCommittee/blob/main/images/AddToElections.jpg" alt="drawing" width="800"/> 
 
 
 ### "Installation" instructions 
@@ -33,6 +61,6 @@ Database Diagram
 - Run FUNCTIONS.sql to create the functions, views, types and such.
 - Run PROCEDURES.sql to create the procedures, triggers, sequences and such.
 - Run DML.sql to populate the tables with initial data.
-- In the file connection.py update the connection details as follows: cx_Oracle.connect('<user>/<pass>@//localhost:1521/<SID>')
+- In the file 'connection.py' update the connection details as follows: cx_Oracle.connect('user/pass@//localhost:1521/SID')
 - Have fun.
 
