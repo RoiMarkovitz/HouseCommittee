@@ -38,11 +38,11 @@ class ApartmentsHistoryWindow(BaseView):
                 if key == 'APARTMENT_NUMBER':
                     records.insert(0, self.dict_apartments_history[index][key])
                 if key == 'START_DATE':
-                    records.insert(1, self.dict_apartments_history[index][key].strftime('%x'))
+                    records.insert(1, self.dict_apartments_history[index][key].strftime('%d-%m-%Y'))
                 if key == 'TENANT_ID':
                     records.insert(2, self.dict_apartments_history[index][key])
                 if key == 'END_DATE':
-                    records.insert(3, self.dict_apartments_history[index][key].strftime('%x'))
+                    records.insert(3, self.dict_apartments_history[index][key].strftime('%d-%m-%Y'))
                 if key == 'FIRST_NAME':
                     records.insert(4, self.dict_apartments_history[index][key])
                 if key == 'LAST_NAME':

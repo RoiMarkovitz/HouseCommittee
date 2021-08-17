@@ -47,7 +47,7 @@ class ServiceProvidersPaymentsDetailsWindow(BaseView):
                 if key == 'PAYMENT_NUMBER':
                     records.insert(0, self.dict_providers_payments_details[index][key])
                 if key == 'PAID_DATE':
-                    records.insert(1, self.dict_providers_payments_details[index][key].strftime('%x'))
+                    records.insert(1, self.dict_providers_payments_details[index][key].strftime('%d-%m-%Y'))
                 if key == 'AMOUNT':
                     records.insert(2, self.dict_providers_payments_details[index][key])
                 if key == 'BUSINESS_NUMBER':

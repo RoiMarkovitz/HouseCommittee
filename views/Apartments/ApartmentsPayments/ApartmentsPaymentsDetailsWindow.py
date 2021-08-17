@@ -63,7 +63,7 @@ class ApartmentsPaymentsDetailsWindow(BaseView):
                 if key == 'PAYMENT_NUMBER':
                     records.insert(0, self.dict_apartments_payments[index][key])
                 if key == 'PAYMENT_DUE_DATE':
-                    records.insert(1, self.dict_apartments_payments[index][key].strftime('%x'))
+                    records.insert(1, self.dict_apartments_payments[index][key].strftime('%d-%m-%Y'))
                 if key == 'REASON':
                     records.insert(2, self.dict_apartments_payments[index][key])
                 if key == 'FIRST_NAME':
@@ -75,7 +75,7 @@ class ApartmentsPaymentsDetailsWindow(BaseView):
                 if key == 'PAYMENT_METHOD':
                     records.insert(6, self.dict_apartments_payments[index][key])
                 if key == 'PAID_DATE':
-                    records.insert(7, self.dict_apartments_payments[index][key].strftime('%x'))
+                    records.insert(7, self.dict_apartments_payments[index][key].strftime('%d-%m-%Y'))
                 if key == 'APARTMENT_NUMBER':
                     records.insert(8, self.dict_apartments_payments[index][key])
 

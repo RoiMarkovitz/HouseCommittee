@@ -48,7 +48,7 @@ class TenantsDetailsWindow(BaseView):
                 if key == 'APARTMENT_NUMBER':
                     records.insert(5, self.dict_tenants_details[index][key])
                 if key == 'START_DATE':
-                    records.insert(6, self.dict_tenants_details[index][key].strftime('%x'))
+                    records.insert(6, self.dict_tenants_details[index][key].strftime('%d-%m-%Y'))
 
             self.records_tree.insert(parent='', index='end', iid=index, text="",
                                      values=(records[0], records[1], records[2],
