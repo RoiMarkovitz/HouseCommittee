@@ -61,6 +61,6 @@ Add To Elections
 - Run FUNCTIONS.sql to create the functions, views, types and such.
 - Run PROCEDURES.sql to create the procedures, triggers, sequences and such.
 - Run DML.sql to populate the tables with initial data.
-- In the file connection.py update the connection details as follows: cx_Oracle.connect('<user>/<pass>@//localhost:1521/<SID>')
+- In the file 'connection.py' update the connection details as follows: cx_Oracle.connect('user/pass@//localhost:1521/SID')
 - Have fun.
 
